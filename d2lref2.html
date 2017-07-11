@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
     <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.js"></script>
     <style>
+
+
+
+@media (max-width: 767px) {
+    .affix {
+        position: static;
+    }
+}
+
         @media print {
             body {
                 font-size: 12px;
@@ -48,7 +57,7 @@
         <hr>
         <div class="row">
             <div class="col-sm-3">
-                <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+                <nav class="affix" id="toc"  data-toggle="toc"></nav>
             </div>
             <div class="col-sm-9">
 
@@ -71,7 +80,7 @@
                     <h2 id="content">Content</h2>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="addmodule">Add a new Module</h3>
                             <ul>
                                 <li>Click
@@ -82,7 +91,7 @@
                                 <li>Press the <kbd>Enter</kbd> key. </li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="addfiles">Add Files <small>(drag and drop)</small></h3>
                             <ul>
                                 <li>Click
@@ -94,7 +103,7 @@
 
                         </div>
                     </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="addtopicexist">Add Topics from existing files in your course</h3>
                             <ul>
                                 <li>Click
@@ -110,7 +119,7 @@
                                     <mark>Add</mark> button</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="addtopichtml">Add a Topic from a new HTML file</h3>
 
                             <ul>
@@ -127,7 +136,7 @@
                                     <mark>Publish</mark> button.</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="linkact">Link to an activity</h3>
 
                             <ul>
@@ -143,7 +152,7 @@
                                     <mark>Create New</mark> option</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="deletemodule">Delete Modules or Topics</h3>
 
                             <ul>
@@ -153,7 +162,7 @@
                                     <mark>Delete</mark> (trashcan icon) option</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="hidtopic">Hide or Reveal Topics</h3>
 
                             <ul>
@@ -167,7 +176,7 @@
                                     <mark>Published / Draft</mark> and choose your setting</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="arrangetopic">Rearrange Modules or Topics</h3>
 
                             <ul>
@@ -181,7 +190,7 @@
                         </div>
 
 
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h2 id="announce">Announcements</h2>
 
@@ -198,7 +207,7 @@
                             <p><em>Note</em>: Clicking the
                                 <mark>X</mark> in the upper right corner of an announcement pane only dismisses items from your view. Your students can still see these items until they are deleted or expired past your date settings.</p>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h2 id="cal">Calendar</h2>
 
@@ -226,7 +235,7 @@
                         <a href="https://www.d2l.com/products/pulse/">https://www.d2l.com/products/pulse/</a></p>
 
                     <hr>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h2 id="copycourse">Copy Course Items</h2>
 
@@ -254,7 +263,7 @@
                              <h2>Upload Course Files <small>(manage files)</small></h2> 
 
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
 
                             <h3 id="uploadfiles">Upload individual files</h3>
@@ -286,20 +295,19 @@
 
                         </div>
 
-                    <div class="row">
                         <h2 id="support">Support</h2>
 
                         <p>From the
                             <mark>Course Home</mark>tab in any course you can click on the
                             <mark>D2L Help</mark> tab at the bottom right of the screen to ask any questions you might have about your course or about D2L in general</p>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="elearnsite"><em>NEW</em> eLearn Documentation Site at ETS</h3>
 
                             <p>A place for 'How Tos' in D2L and Accessibility
                                 <a href="http://blogs.pstcc.edu/elearn/d2l/">http://blogs.pstcc.edu/elearn/d2l/</a></p>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="documentation">Official Brightspace Documentation</h3>
 
@@ -307,7 +315,6 @@
                                 <mark>Resources</mark> |
                                 <mark>D2L Documentation</mark> at the top of any page in D2L</p>
                         </div>
-                    </div>
 
 
 
@@ -320,7 +327,7 @@
                         <mark>Message</mark>
                     </p>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="enroll">Enroll a Student or other Instructor</h3>
 
                             <ul>
@@ -339,7 +346,7 @@
 
 
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="unenroll">Unenroll from the Class List</h3>
 
@@ -358,7 +365,7 @@
 
                     <h2 id="groups">Groups Tool</h2>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-xs-6">
 
 
 
@@ -384,7 +391,7 @@
                             </ul>
 
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
                             <h3 id="assigngroups">Create Groups that you assign</h3>
 
                             <ul>
@@ -409,7 +416,7 @@
                     <h2 id="discuss">Discussions</h2>
                     <div class="row">
 
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="creatediscussion">Create new discussion forums and topics</h3>
 
@@ -434,7 +441,7 @@
                                     <mark>Assessment</mark> tab to link a topic to a grade item</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="discussiongrade">Grade a Discussion Topic</h3>
 
@@ -457,7 +464,7 @@
                     <h2 id="assignments">Assignments - DropBox</h2>
                     <div class="row">
 
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="createassignment">Creating an Assignment folder</h3>
 
@@ -477,7 +484,7 @@
                                 <li><em>Optionally</em>, you can create and associate rubrics with an assignment</li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="feedbackassign">Grade and Provide Feedback for submissions</h3>
 
@@ -503,7 +510,7 @@
                     </p>
                     <div class="row">
 
-                        <div class="col">
+                        <div class="col-xs-6">
 
 
 
@@ -567,7 +574,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="randomquiz">Create a Random set of questions in a Quiz</h3>
 
@@ -635,7 +642,7 @@
                     </p>
                     <div class="row">
 
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="wizar">Using Grades Wizard</h3>
 
@@ -716,7 +723,7 @@
 
 
                         </div>
-                        <div class="col">
+                        <div class="col-xs-6">
 
                             <h3 id="droplowest">Drop lowest grades in a category</h3>
                             <ul>

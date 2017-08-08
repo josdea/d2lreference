@@ -1,125 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!-- cSpell:ignore Brightspace, Pellissippi, body, directionshtml, quickmarks, checkmarks, Turnitin, howto, unenroll, howtos, classlist, crossorigin, gradebook -->
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <meta http-equiv="refresh" content="5"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta http-equiv="refresh" content="10">   -->
     <title>D2L Quick Reference</title>
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  -->
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossorigin="anonymous">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>  -->
+
+
+
     <style>
-       
-
-        @media screen and (min-width: 768px) {
-     
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: inherit;
         }
- 
 
-        /* ul li ul {
-               list-style: none; 
-        } */
-
-        @media (min-width: 979px) {
-           
+        a:active,
+        a:hover {
+            text-decoration: underline;
         }
-       
+
+        blockquote {
+            border-left: 5px solid #f0f0f0;
+            padding-left: 1.5rem;
+        }
+
+        @media screen and (min-width: 768px) {}
+
+        @media (min-width: 979px) {}
 
         @media (max-width: 1000px) {}
 
-
         @media print {
-           
-            a[href]:after {
-                content: none;
+            h1 {
+                font-size: 1.3rem
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            h3 {
+                font-size: 1.0rem;
+            }
+            h4 {
+                font-size: .9rem;
+            }
+            blockquote {
+                border: none;
+            }
+            body {
+                font-size: .8rem;
+            }
+            mark {
+                background-color: #f0f0f0;
+                text-decoration: underline;
+            }
+            .directions a[href]:after {
+                content: " (" attr(href) ") ";
+            }
+             ::first-letter {
+                margin: 0;
+                padding: 0;
+            }
+            .main-content {
+                height: 100%;
             }
         }
     </style>
 </head>
 
 <body>
-
-
     <div id="app">
-
-        <!-- <nav class="navbar navbar-default navbar-fixed-top" role="banner">
-  <div class="container" id="app">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">{{message}}</a>
-    </div>
-    <nav class="collapse navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="#sec">Get Started</a>
-        </li>
-        <li>
-          <a href="#sec">Edit</a>
-        </li>
-        <li>
-          <a href="#sec">Visualize</a>
-        </li>
-        <li>
-          <a href="#sec">Prototype</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</nav> -->
-
         <div id="masthead">
             <div class="container">
-
                 <h1>{{title}}
                     <p class="lead"><a v-bind:href="subtitle.url">{{subtitle.text}}</a></p>
                 </h1>
-
             </div>
             <!--/container-->
         </div>
         <!--/masthead-->
-
         <!--main-->
         <div class="container">
             <div class="row">
                 <!--left-->
                 <div class="col-md-3 hidden-print" id="leftCol">
-                    <ul class="nav nav-stacked" id="sidebar">
-                        <li v-for="tool in tools"><a v-bind:href="addTag(tool.title)">{{tool.title}}</a>
-                             <ul>
+                    <ul class="nav flex-column" id="nav">
+                        <li class="nav-item" v-for="tool in tools"><a v-bind:href="addTag(tool.title)">{{tool.title}}</a>
+                            <ul class="hidden-md-down hidden-print">
                                 <small><li v-if="tool.howtos" v-for="howto in tool.howtos"><a v-bind:href="addTag(howto.title)" v-html="howto.title"></a></li></small>
 
-                            </ul> 
+                            </ul>
                         </li>
                     </ul>
                 </div>
                 <!--/left-->
-<!-- todo don't highlight heading links -->
                 <!--right-->
-                <div class="col-md-9">
+                <div class="col-md-9 main-content">
                     <div class="tool" v-for="tool in tools">
-                        <h2 v-bind:id="tool.title"><a title="go to top" href="#">{{tool.title}}</a></h2>
+                        <h2 v-bind:id="tool.title.toLowerCase()"><a title="go to top" href="#">{{tool.title}}</a></h2>
                         <blockquote v-if="tool.location" v-html="tool.location"></blockquote>
                         <p v-if="tool.info"><span v-html="tool.info"></span></p>
                         <div v-if="tool.howtos" v-for="howto in tool.howtos" class="howto">
-                            <h3 v-bind:id="howto.title" v-html="howto.title"></h3>
-                            <div v-html="howto.directionshtml"></div>
-                            
+                            <a title="go to top" href="#">
+                                <h3 v-if="howto.title" v-bind:id="howto.title.toLowerCase()" v-html="howto.title"></h3>
+                            </a>
+                            <div class="directions" v-html="howto.directionshtml"></div>
                         </div>
                         <!--/howto-->
                     </div>
@@ -130,8 +131,6 @@
             <!--/row-->
         </div>
         <!--/container-->
-
-
     </div>
     <!-- end of app -->
 
@@ -151,30 +150,32 @@
                         howtos: [
                             {
                                 title: "Create an Announcement",
-                                directionshtml: `Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to announcement
-                            heading and choose <i class="fa fa-plus" aria-hidden="true"></i>
-                            <mark>new announcement</mark>`
+                                directionshtml: `<ul>
+                                <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to an announcement
+                            heading</li> <li>Select <i class="fa fa-plus" aria-hidden="true"></i>
+                            <mark>new announcement</mark></p>`
                             },
                             {
                                 title: "Delete an Announcement",
-                                directionshtml: `<p><em>Note</em>: Clicking the
+                                directionshtml: `<ul><li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to announcement
+                            heading</li><li>Select <i class="fa fa-trash" aria-hidden="true"></i>
+                            <mark>Delete</mark></li></ul>
+                            <p><em>Note</em>: Clicking the
                                 <mark>X</mark> in the upper right corner of an announcement pane only dismisses items from your
                                 view. Your students can still see these items until they are deleted or expired past your
-                                date settings</p>`
+                                date settings.</p>`
                             },
                             {
                                 title: "Dismiss an Announcement",
-                                directionshtml: `Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to an announcement
-                            heading and choose <i class="fa fa-trash" aria-hidden="true"></i>
-                            <mark>delete</mark>`
+                                directionshtml: `<p>Click the <mark>X</mark> next to an announcement
+                            heading to dismiss an announcement from your view only.</p>`
                             },
                             {
                                 title: "Edit Announcement",
-                                directionshtml: ` Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to an announcement
-                            heading and choose <i class="fa fa-pencil" aria-hidden="true"></i>
-                            <mark>edit</mark>
-                            Check the <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                            <mark>Major edit</mark> option to make the item reappear for users who had previously dismissed it.`
+                                directionshtml: `<ul><li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to an announcement
+                            heading</li><li>Select <i class="fa fa-pencil" aria-hidden="true"></i> <mark>edit</mark></li>
+                            <li>Check the <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                            <mark>Major edit</mark> option to make the item reappear for users who had previously dismissed it</li></ul>`
                             }
                         ]
                     },
@@ -189,22 +190,19 @@
                             <mark>New Submission Folder</mark> button
                         </li>
                         <li>Name the assignment and <em>optionally</em> connect to a grade Item</li>
-
-                        <li>Set due dates or times on the
-                            <mark>Restrictions</mark> tab to automatically place assignment on the calendar</li>
-                        <li>To check for plagiarism, navigate to the
-                            <mark>Turnitin<i class="fa fa-registered" aria-hidden="true"></i></mark> tab and enable.</li>
-                        <li><em>Optionally</em>, you can create and associate rubrics with an assignment</li>
+                        <li>Set due dates on the
+                            <mark>Restrictions</mark> tab to automatically place the assignment on the calendar</li>
+                        <li>To check for plagiarism, navigate to the <mark>Turnitin <i class="fa fa-registered" aria-hidden="true"></i></mark> tab and enable</li>
                     </ul>`
                             },
                             {
                                 title: "Grade and Provide Feedback for submissions",
                                 directionshtml: ` <ul>
                         <li>Click the name of the Assignment folder</li>
-                        <li>Choose
+                        <li>Select
                             <mark>Users without feedback</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> option in the
                             pulldown menu</li>
-                        <li>Click the file name to preview, grade, or provide feedback. See Feedback Studio below.</li>
+                        <li>Click the file name to preview, grade, or provide feedback (See Feedback Studio below)</li>
 
                         <li>Click the
                             <mark>Publish</mark> button to release grade or basic feedback to the student</li>
@@ -218,8 +216,8 @@
                         it must be enabled for the submission folder. This can be done when the assignment is created or
                         at any time by navigating to the
                         <mark>Turnitin<i class="fa fa-registered" aria-hidden="true"></i></mark> tab for the assignment.</p>
-                    <h4 id="feedback-studio">Feedback Studio</h4>
-
+                    <h4 id="feedback studio">Feedback Studio</h4>
+<ul>
                     <li>Click the name of the Assignment folder</li>
                     <li>Choose
                         <mark>Users without feedback</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> option in the pulldown
@@ -227,7 +225,8 @@
                     </li>
                     <li>Click the percentage information next to the document title to open document in feedback studio.</li>
                     <li>Add comments, recordings, quickmarks, and rubrics. </li>
-                    <p>Try this demo of <a href="http://turnitin.com/assets/en_us/media/feedback-studio-demo/">Feedback Studio</a></p>`
+                    </ul>
+                    <p>Try this demo of <a target="_blank" href="http://turnitin.com/assets/en_us/media/feedback-studio-demo/">Feedback Studio.</a> <i class="fa fa-external-link" aria-hidden="true"></i></p>`
                             }
                         ]
                     },
@@ -236,28 +235,27 @@
                         location:
                         "Found on the course navigation menu, course homepage, and the organization homepage. ",
                         info:
-                        "Course items, quizzes, assignments, etc. that are given dates in the course automatically appear on the course calendar",
+                        "Course items, quizzes, assignments, etc. that are given dates in the course automatically appear on the course calendar.",
                         howtos: [
                             {
                                 title: "Create a Calendar Event",
-                                directionshtml: `<p>Click
-                        <mark>Create Event</mark> and set details, dates, and <em>optionally</em> associate with content</p>`
+                                directionshtml: `<ul><li>Click
+                        <mark>Create Event</mark></li><li>Set details, dates, and <em>optionally</em> associate with content</li></ul>`
                             },
                             {
                                 title: "Manage Dates",
                                 directionshtml: `<p>Use the Manage Dates tool to view, edit, and offset the date availability and set the calendar status
                         of all content topics and modules, discussion topics and forums, assignment submissions folders,
-                        grades categories and items, announcement items, and quizzes from one central location.</p>
-                    <p>Read more about the <a href="https://documentation.brightspace.com/EN/le/manage_dates/instructor/manage_dates_intro_1.htm">Manage Dates</a>  `
+                        grades categories and items, announcement items, and quizzes from one central location.  Read more about the <a target="_blank" href="https://documentation.brightspace.com/EN/le/manage_dates/instructor/manage_dates_intro_1.htm">Manage Dates tool. </a><i class="fa fa-external-link" aria-hidden="true"></i></p>  `
                             }
                         ]
                     },
                     {
                         title: "Class Progress",
                         location: "Found on the course navigation menu",
-                    howtos: [
+                        howtos: [
                             {
-                                title: "Access",
+                                title: "Access Reports",
                                 directionshtml: `<p>Students and instructors can both access reports and details on progress through the course. This includes:
                     grades, objectives, content, discussions, assignment submission folder, quizzes, checklist, surveys,
                     and login reports. </p>`
@@ -266,10 +264,6 @@
                     {
                         title: "Classlist",
                         location: "Found on the course navigation menu",
-                        info: `<p>Message from the class list by clicking the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i>next
-                    to the student(s) you'd like to message and then click
-                    <mark>Message</mark>
-                </p>`,
                         howtos: [
                             {
                                 title: "Enroll a Student or Instructor",
@@ -287,16 +281,24 @@
                     </li>
                 </ul>
                 <p><em>Careful:</em> be sure you don&#39;t accidentally enroll a student as an instructor as they would be able
-                    to change anything you can change in your course</p>
+                    to change anything you can change in your course.</p>
 `
                             },
                             {
                                 title: "Unenroll a User",
                                 directionshtml: `<ul>
-                    <li>Select the checkbox next to the user(s) to unenroll</li>
+                    <li>Select the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the user(s) to unenroll</li>
                     <li>Click
                         <mark>unenroll</mark> at the top of the list</li>
                 </ul>`
+                            },
+                            {
+                                title: "Send Messages",
+                                directionshtml: `<ul><li>Select the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> next
+                    to the student(s) you would like to message</li><li>Click
+                    <mark>Message</mark>
+                </li></ul>`
+
                             }
                         ]
                     },
@@ -306,12 +308,9 @@
                         howtos: [
                             {
                                 title: "Add a New Module",
-                                directionshtml: ` <ul>
-
-                    <li>Type a name in the
+                                directionshtml: ` <ul><li>Type a name in the
                         <mark>Add a module</mark> text field (left column at the bottom)</li>
-                    <li>Press the <kbd>Enter</kbd> key. </li>
-                </ul>`
+                    <li>Press the <kbd>Enter</kbd> key. </li></ul>`
                             },
                             {
                                 title: "Add a Topic from a new HTML file",
@@ -325,7 +324,7 @@
                     </li>
                     <li>Enter a title
                     </li>
-                    <li>Select one of the document template styles next the document title</li>
+                    <li><em>Optionally,</em> select one of the document template styles next the document title</li>
                     <li>Type or paste content in the HTML editor</li>
                     <li>
                         <mark>Publish</mark>
@@ -355,16 +354,16 @@
                             },
                             {
                                 title: "Add Files <small>(bulk upload to manage files)</small>",
-                                directionshtml: `     <ul>
-
-                    <li>Select a module from the Table of Contents</li>
-                    <li>Click
-                        <mark>New</mark> |
-                        <mark>Add from Manage Files</mark>
-                    </li>
-                    <li>Check the boxes to the left of the files you want to add</li>
-                    <li>Click the
-                        <mark>Add</mark> button</li>
+                                directionshtml: `<ul>
+                    <li>Locate the files / folders on your local computer and highlight or select them </li>
+                    <li>Create a <code>.zip</code> file (PC: Right click |
+                        <mark>Send To</mark> |
+                        <mark>Compressed (zipped) folder</mark> Mac: <kbd>CTRL</kbd>-click |
+                        <mark>Compress</mark>)</li>
+                    <li>Upload the archive / zip file (see directions above for uploading a file)</li>
+                    <li>Locate the uploaded zip file, activate the context menu for the item, and chose the
+                        <mark>Unzip</mark> option</li>
+                    <li>Once files are unzipped, delete the original zip file</li>
                 </ul>`
                             },
                             {
@@ -450,71 +449,89 @@
                     <li>
                         <mark>Continue</mark> after confirming your choices</li>
                     <li>Click
-                        <mark>Finish</mark> and wait for the green checkmarks to appear</li>
+                        <mark>Finish</mark> and wait for the green check marks to appear</li>
                 </ul>`
                             },
                             {
                                 title: "Messaging",
-                                directionshtml: `<p>Send messages from the class list, assignments, grades, mail tool, etc.</p>
-                <h4 id="access">Access</h4>
+                                directionshtml: `<p>Send messages from the classlist, assignments, grades, mail tool, etc.</p>
+                <h4 id="access course messages">Access Course Messages</h4>
 
                 <ul>
                     <li>Enter a course</li>
-                    <li>Click the mail icon <i class="fa fa-envelope" aria-hidden="true"></i> on the mini navigation menu.</li>
+                    <li>Click the mail icon <i class="fa fa-envelope" aria-hidden="true"></i> on the mini navigation menu</li>
 
                 </ul>
 
 
-                <h4 id="forward-messages">Forward Messages</h4>
-                <p> Only Instructors can forward their course messages to an external email address by going to
-                    <mark>Settings</mark> from within course messages. <em>Note:</em> these messages cannot be replied to from
-                    the external address</p>
-                <h3 id="notifications">Notifications</h3>
-                <p>Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.
-                    See also, the Pulse App.</p>
-                <h3 id="pinning-courses">Pinning Courses</h3>
-                <ul>
-                    <li>Click the course selection dropdown menu in the mini navigation bar at the top of the page. </li>
-                    <li>Select the thumb-tack <i class="fa fa-thumb-tack" aria-hidden="true"></i> next to a course title to pin
-                        it to the top of the list. </li>
-                </ul>`
+                <h4 id="forward messages">Forward Messages</h4>
+                <p> Only Instructors can forward their course messages to an external email address by going to <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i> from within course messages. <em>Note:</em> these messages cannot be replied to from
+                    the external address.</p>
+
+                <h4>Send Messages</h4>
+                <p><a href="#send messages">See classlist messaging</a></p>
+                    
+                `
                             },
                             {
                                 title: "Notifications",
-                                directionshtml: `<p>Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.
+                                directionshtml: `<p>Find notification settings by clicking your name in the top-right corner of the page. Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.
                     See also, the Pulse App.</p>`
                             },
                             {
                                 title: "Pinning Courses",
                                 directionshtml: `<ul>
-                    <li>Click the course selection dropdown menu in the mini navigation bar at the top of the page. </li>
-                    <li>Select the thumb-tack <i class="fa fa-thumb-tack" aria-hidden="true"></i> next to a course title to pin
-                        it to the top of the list. </li>
+                    <li>Click the course selection dropdown menu <i class="fa fa-caret-down" aria-hidden="true"></i> in the mini navigation bar at the top of the page</li>
+                    <li>Select the thumbtack <i class="fa fa-thumb-tack" aria-hidden="true"></i> next to a course title to pin
+                        it to the top of the list</li>
                 </ul>`
                             },
                             {
                                 title: "Profile",
-                                directionshtml: `TODO`
+                                directionshtml: `<p>Find profile settings by clicking your name in the top-right corner of the page. Add a profile image and encourage your students to do the same. Add further contact information, interests, and social networking connections.</p>`
                             },
                             {
                                 title: "Pulse App",
-                                directionshtml: `         <p>Students can see course updates, Content, dates, announcements, and grades for all their courses. Direct students
+                                directionshtml: `<p>Students can see course updates, Content, dates, announcements, and grades for all their courses. Direct students
                     to download the app for iPhone and Android devices!
-                    <a href="https://www.d2l.com/products/pulse/">https://www.d2l.com/products/pulse/</a></p>`
+                    <a href="https://www.d2l.com/products/pulse/" target="_blank">Download the Pulse App </a><i class="fa fa-external-link" aria-hidden="true"></i></p>`
                             }
                         ]
                     },
                     {
                         title: "Discussions",
                         location: "Found on the course navigation menu",
+                        info: "Instructors can create forums, topics, threads, and replies. Students can create threads and replies if a topic is available.",
                         howtos: [
                             {
-                                title: "Create new discussion forums and topics",
-                                directionshtml: `TODO`
+                                title: "Create a new Forum or Topics",
+                                directionshtml: ` <ul><li>Click the
+                        <mark>New</mark> button</li>
+                        <li>Select either
+                        <mark>New Forum</mark> or
+                        <mark>New Topic</mark>
+                    </li>
+                        <li>Complete the form: name, description, and availability (if desired)</li>
+                    <li>If it is a new forum then click
+                        <mark>Save and Add Topic</mark> to complete the topic setup form</li>
+                    <li>Use the
+                        <mark>Assessment</mark> tab to link a topic to a grade item</li>
+                        </ul>`
                             },
                             {
                                 title: "Grade a Discussion Topic",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> of a topic select
+                        <mark>Assess Topic</mark>
+                    </li>
+                    <li>Click on the
+                        <mark>Topic Score</mark> link under the student’s name</li>
+                    <li>Enter score(s) and check the
+                        <mark>published</mark> box to send the score to the gradebook</li>
+                    <li>
+                        <mark>Save and Close</mark>
+                    </li>
+                </ul>`
                             }
                         ]
                     },
@@ -524,43 +541,155 @@
                         howtos: [
                             {
                                 title: "Calculating and Releasing Final Grades",
-                                directionshtml: `TODO`
+                                directionshtml: `<p>Students cannot see final adjusted or calculated grades until you release it to them.</p>
+<h4>Grade to Release</h4>
+                <ul>
+                    <li>From within the gradebook click <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i>
+                    </li><li>Click the <mark>Calculation Options</mark> tab </li>
+                    <li>Select whether the adjusted or calculated
+                        grade is released</li>
+                        <li><mark>Save</mark> and <mark>Close</mark></li>
+                        </ul>
+                        <h4>Grade Scheme and Display</h3>
+                        <ul>
+                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the final grade item, click <mark>edit</mark></li>
+                    <li>Use the pulldown menu <i class="fa fa-caret-down" aria-hidden="true"></i> to select desired Grade Scheme</li>
+                    <li>Use Display Options to set what your students will see</li>
+                    <li><mark>Save and Close</mark></li>
+                    <li>Return to the <mark>Enter Grades</mark> screen</li> 
+                    </ul>
+                      <h4>Release</h4>
+                      <ul>
+                    <li>From the context menu next to
+                        <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> click
+                        <mark>Grade All</mark>
+                    </li>
+                    <li>At the top of the page next to
+                        <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> activate the context menu and select
+                        <mark>Recalculate All</mark>
+                    </li>
+                    <li>For Adjusted grade, choose
+                        <mark>Transfer All</mark> also from the <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> context menu at the top of the page</li>
+                    <li>Adjust any values in the Adjusted Grades column and <mark>Save</mark></li>
+                    <li>From the context menu next to
+                        <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> click
+                        <mark>Release All</mark>
+                    </li>
+                    <li>
+                        <mark>Save and Close</mark>
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Create Grade Items or Categories",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+                    <li>Click the <mark>Manage Grades</mark> tab </li>
+                    <li>Click
+                        <mark>New</mark></li>
+                    <li>Choose either
+                        <mark>Item</mark> or
+                        <mark>Category</mark> in the context menu <i class="fa fa-caret-down" aria-hidden="true"></i></li>
+                    <li>Name the item or category and make property selections</li>
+                    <li>
+                        Click <mark>Save</mark> or click <mark>Save and New</mark> to continue adding more grade items
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Drop lowest grades in a category",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+
+ <li>Click the <mark>Manage Grades</mark> tab</li>
+                    <li>Click on a Category name</li>
+                    <li>Check the box next to
+                        <mark>Distribute Points Evenly</mark>
+                    </li>
+                    <li>Set the points for each item</li>
+                    <li>Enter the number of highest or lowest items to drop </li>
+                    <li>
+                        <mark>Save and Close</mark>
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Edit multiple grade items",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+                    <li>Check the top box <i class="fa fa-check-square-o" aria-hidden="true"></i> to select all grade items</li>
+                    <li>Click
+                        <mark>Bulk Edit</mark>
+                    </li>
+                    <li>Make changes and
+                        <mark>Save</mark>
+                    </li>
+                </ul>`
+                            }, {
+                                title: "Enter Grades by Item",
+                                directionshtml: `<ul>
+                   <li>Select either the <mark>Enter Grades</mark> tab or the <mark>Manage Grades</mark> tab
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to a grade item and select either 
+                        <mark>Enter Grades</mark> or <mark>Grade All</mark></li>
+                    <li>Enter points for each student and
+                        <mark>Save</mark>
+                    </li>
+                </ul>`
                             },
                             {
-                                title: "Enter Grades for a Student",
-                                directionshtml: `TODO`
-                            },
-                            {
-                                title: "Enter Grades for an Item",
-                                directionshtml: `TODO`
+                                title: "Enter Grades by Student",
+                                directionshtml: `     <ul>
+                   <li>Click the <mark>Enter Grades</mark> tab</li>
+                    <li>Click on a student’s name</li>
+                    <li>Enter grades for each item for the student</li>
+                    <li>
+                        <mark>Save</mark>
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Extra Credit Items",
-                                directionshtml: `TODO`
+                                directionshtml: `  <ul>
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to a grade item and click <mark>edit</mark></li>
+                    <li>Check the
+                        <mark>Bonus</mark> option</li>
+                    <li>
+                        <mark>Save and Close</mark>
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Re-order Gradebook Items",
-                                directionshtml: `TODO`
+                                directionshtml: `        <ul>
+                    <li>Click the <mark>Manage Grades</mark> tab</li>
+                    <li>Click the
+                        <mark>More Actions</mark> button</li>
+                        <li>Select the
+                        <mark>Reorder</mark> option</li>
+                    <li>Change the sort order using the numbered pulldown menus <i class="fa fa-caret-down" aria-hidden="true"></i></li>
+                    <li>
+                        <mark>Save</mark>
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Show / Hide points / scheme / color",
-                                directionshtml: `TODO`
+                                directionshtml: `        <ul>
+                    <li>Click <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i>  in the top-right corner of the gradebook</li>
+                    <li>On the
+                        <mark>Personal Display Options</mark> tab, check the boxes in the Grade Details section to
+                        <mark>show points, grade scheme symbol (A, B, C), or grade scheme color</mark>
+                    </li>
+                    <li>Set student view properties on the
+                        <mark>Org Unit Display</mark> Options tab </li>
+                </ul>`
                             },
                             {
                                 title: "Wizard for Grades Setup",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+                    <li>Click the <mark>Setup Wizard</mark> tab</li>
+                    <li>Click <mark>Start</mark> and answer the questions to define your gradebook settings - weighted, grade scheme, display options, etc.
+                    </li></ul>
+                        <em>Note:</em> all these settings can be modified at any time by going to
+                        <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i> from within the gradebook.
+                `
                             }
                         ]
                     },
@@ -570,15 +699,45 @@
                         howtos: [
                             {
                                 title: "Auto-Generated Groups",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+                   
+                    <li>Click
+                        <mark>New Category</mark> and provide a name and description</li>
+                    <li>Select enrollment style from the menu (
+                        <mark>Groups of #</mark> or
+                        <mark># of Groups</mark>), entering the number desired</li>
+                    <li>Check the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to add Discussions or Assignments (if needed)</li>
+                    <li>
+                        <mark>Save</mark>
+                    </li>
+                    <li><em>Optionally,</em> click the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the group category and click <mark>Enroll Users</mark> to manually manage enrollments</li>
+                </ul>`
                             },
                             {
                                 title: "Manually Assigned Groups",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+                   
+                    <li>Click
+                        <mark>New Category</mark> and provide a name and description</li>
+                    <li>Select enrollment style from the menu (
+                        <mark># of Groups - No Auto Enrollments</mark>), entering the number of desired groups</li>
+                    <li>Check the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to add Discussions or Assignments (if needed)</li>
+                    <li>
+                        <mark>Save</mark>
+                    </li>
+                    <li>Click the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the group category and click <mark>Enroll Users</mark> to manage enrollments</li>
+                </ul>`
                             },
                             {
                                 title: "Self-Enrollment",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul><li>Click <mark>New Category</mark> and provide a name and description</li>
+                    <li>Select self-enrollment style from the menu (
+                        <mark>Groups of # - Self Enrollment</mark> or
+                        <mark># of Groups - Self Enrollment</mark>), entering the number desired</li>
+                        <li>Specify optional enrollment deadline</li>
+                    <li>Check the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to add Discussions or Assignments (if needed)</li>
+                    <li><mark>Save</mark></li>
+                    <li><em>Optionally,</em> click the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the group category and click <mark>Enroll Users</mark> to manually manage enrollments</li></ul>`
                             }
                         ]
                     },
@@ -588,84 +747,130 @@
                         howtos: [
                             {
                                 title: "Create a Quiz",
-                                directionshtml: `TODO`
+                                directionshtml: `<ul>
+                    <li>Click
+                        <mark>New Quiz</mark>
+                    </li>
+                    <li>Enter a quiz name and <mark>Add / Edit Questions</mark> on the
+                        <mark>Properties</mark> tab</li>
+                    <li>Visit the
+                        <mark>Restrictions</mark> tab to set dates of availability and time limits</li>
+                    <li>Associate a quiz with a Grade item on the
+                        <mark>Assessment</mark> tab</li>
+                    <li>Check the
+                        <mark>Auto Export to Grades</mark> and
+                        <mark>Automatic Grade</mark> options if desired</li>
+                    <li>Set the number of attempts allowed</li>
+                    <li>Setup student view of results on the
+                        <mark>Submission Views</mark> tab</li>
+                </ul>`
                             },
                             {
                                 title: "Grade a Quiz",
-                                directionshtml: `TODO`
+                                directionshtml: `   <ul>
+                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name choose the
+                        <mark>Grade</mark> option</li>
+                    <li>Click
+                        <mark>attempt</mark> under student’s name</li>
+                    <li>Scroll down to view/grade answers and give feedback for the student</li>
+                </ul>`
                             },
                             {
                                 title: "Quick Edit Multiple Quizzes",
-                                directionshtml: `TODO`
+                                directionshtml: ` <ul>
+                    <li>Use the check boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> next to quizzes or select box <i class="fa fa-check-square-o" aria-hidden="true"></i> at the top or bottom of the list to select all
+                    </li>
+                    <li>Click the
+                        <mark>Bulk Edit</mark>
+                    </li>
+                    <li>Make changes to name, category, active status, or attempt number</li>
+                    <li>
+                        <mark>Save</mark>
+                    </li>
+                </ul>`
+                            },
+                            {
+                                title: "Questions - Add and Edit",
+                                directionshtml: ` <ul>
+                    <li>Access the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz title</li>
+                    <li>Click the
+                        <mark>Add/Edit Questions</mark> button found under the <mark>Properties</mark> tab
+                    </li>
+                    <li>Select the <mark>New</mark> button to add questions</li>
+                    <li>When finished, click 
+                        <mark>Done Editing Questions</mark>
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Randomize Questions",
-                                directionshtml: `TODO`
+                                directionshtml: ` <ul>
+                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name choose the
+                        <mark>Edit</mark> option</li>
+                    <li>Toggle the <mark>shuffle order of questions</mark> checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> on the <mark>Properties</mark> tab
+                    <li><mark>Save and Close</mark>
+                </ul>`
                             },
                             {
                                 title: "Reset a Quiz Attempt",
-                                directionshtml: `TODO`
+                                directionshtml: `  <ul>
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name and choose
+                        <mark>Grade</mark> option</li>
+                    <li>Click the
+                        <mark>Display Options</mark> button and check
+                        <mark>Allow Reset</mark> (if necessary)</li>
+                    <li>Check the box <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the student’s attempt</li>
+                    <li>Click the trashcan icon <i class="fa fa-trash" aria-hidden="true"></i> at the top of the listing</li>
+                    <li>Click
+                        <mark>Yes</mark>
+                    </li>
+                </ul>`
                             },
                             {
                                 title: "Special Access and Extended Time",
-                                directionshtml: `TODO`
+                                directionshtml: `    <ul>
+                    <li>Click on the Quiz name</li>
+                    <li>Click on the
+                        <mark>Restrictions</mark> tab and scroll down to the bottom</li>
+                    <li>Click on the
+                        <mark>Add Users to Special Access</mark> button</li>
+                    <li>Make choices and settings for individuals or groups as needed</li>
+                    <li>Save changes when finished</li>
+                </ul>`
                             }
                         ]
                     },
                     {
                         title: "Support",
                         info: `<p>From the
-                    <mark>Course Home</mark>tab in any course you can click on the
+                    <mark>Course Home </mark>page in any course you can click on the
                     <mark>D2L Help</mark> tab at the bottom right of the screen to ask any questions you might have about your
-                    course or about D2L in general</p>
+                    course or about D2L in general.</p>
 `,
                         howtos: [
                             {
-                                title: "<em>NEW</em> eLearn Documentation Site at ETS",
-                                directionshtml: ` <p>A place for 'How Tos' in D2L and Accessibility
-                    <a href="http://blogs.pstcc.edu/elearn/d2l/">http://blogs.pstcc.edu/elearn/d2l/</a></p>
+                                title: "eLearn Documentation Site at ETS",
+                                directionshtml: ` <p>A place for 'How Tos' in D2L and Accessibility.
+                    <a target="_blank" href="http://blogs.pstcc.edu/elearn/d2l/">ETS eLearn Documentation Site</a> <i class="fa fa-external-link" aria-hidden="true"></i></p>
 `
                             },
                             {
                                 title: "Official Brightspace Documentation",
                                 directionshtml: `   <p>Click
                     <mark>Resources</mark> |
-                    <mark>D2L Documentation</mark> at the top course selection screen when you first login.L</p>`
+                    <mark>D2L Documentation</mark> at the top course selection screen when you first login. Or access <a href="https://documentation.brightspace.com" target="_blank">the documentation here</a> <i class="fa fa-external-link" aria-hidden="true"></i></p>`
                             }
                         ]
                     }
                 ]
             },
             methods: {
-                addTag: function (x) { return "#" + x }
+                addTag: function (x) { return "#" + x.toLowerCase() }
             }
         });
     </script>
 </body>
 
+
+
 </html>
-<!-- 
-### Edit Announcement
-### Turnitin Feedback Studio
-#### Enable
-#### Feedback Studio
-## Calendar
-### Create a Calendar Event
-### Manage Dates
-## Class Progress
-## Classlist
-## Content
-## Course Admin and Organization
-### Copy Course Components
-### Groups
-### Messaging
-#### Access
-#### Forward Messages
-### Notifications
-#### Pulse App
-### Pinning Courses
-### Profile
-## Discussions
-## Grades
-## Quizzes
-### Support -->

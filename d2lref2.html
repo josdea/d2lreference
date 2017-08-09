@@ -66,12 +66,17 @@
             body {
                 font-size: .8rem;
             }
-            mark {
+            mark, kbd{
+                color: inherit;
                 background-color: #f0f0f0;
-                text-decoration: underline;
+                /* text-decoration: underline; */
+                font-weight: bold;
             }
             .directions a[href]:after {
                 content: " (" attr(href) ") ";
+            }
+            .fa-external-link{
+                display: none;
             }
              ::first-letter {
                 margin: 0;
@@ -160,21 +165,21 @@
                                 directionshtml: `<ul><li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to announcement
                             heading</li><li>Select <i class="fa fa-trash" aria-hidden="true"></i>
                             <mark>Delete</mark></li></ul>
-                            <p><em>Note</em>: Clicking the
+                            <p><em>Note</em>: Selecting the
                                 <mark>X</mark> in the upper right corner of an announcement pane only dismisses items from your
                                 view. Your students can still see these items until they are deleted or expired past your
                                 date settings.</p>`
                             },
                             {
                                 title: "Dismiss an Announcement",
-                                directionshtml: `<p>Click the <mark>X</mark> next to an announcement
+                                directionshtml: `<p>Select the <mark>X</mark> next to an announcement
                             heading to dismiss an announcement from your view only.</p>`
                             },
                             {
                                 title: "Edit Announcement",
                                 directionshtml: `<ul><li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to an announcement
                             heading</li><li>Select <i class="fa fa-pencil" aria-hidden="true"></i> <mark>edit</mark></li>
-                            <li>Check the <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                            <li>Select the <i class="fa fa-check-square-o" aria-hidden="true"></i>
                             <mark>Major edit</mark> option to make the item reappear for users who had previously dismissed it</li></ul>`
                             }
                         ]
@@ -186,8 +191,7 @@
                             {
                                 title: "Create an Assignment Submission Folder",
                                 directionshtml: `<ul>
-                        <li>Click on the
-                            <mark>New Submission Folder</mark> button
+                        <li>Select the <mark>New Submission Folder</mark> button
                         </li>
                         <li>Name the assignment and <em>optionally</em> connect to a grade Item</li>
                         <li>Set due dates on the
@@ -198,13 +202,13 @@
                             {
                                 title: "Grade and Provide Feedback for submissions",
                                 directionshtml: ` <ul>
-                        <li>Click the name of the Assignment folder</li>
+                        <li>Select the name of the Assignment folder</li>
                         <li>Select
                             <mark>Users without feedback</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> option in the
                             pulldown menu</li>
-                        <li>Click the file name to preview, grade, or provide feedback (See Feedback Studio below)</li>
+                        <li>Select the file name to preview, grade, or provide feedback (See Feedback Studio below)</li>
 
-                        <li>Click the
+                        <li>Select the
                             <mark>Publish</mark> button to release grade or basic feedback to the student</li>
                     </ul>`
                             },
@@ -218,12 +222,12 @@
                         <mark>Turnitin<i class="fa fa-registered" aria-hidden="true"></i></mark> tab for the assignment.</p>
                     <h4 id="feedback studio">Feedback Studio</h4>
 <ul>
-                    <li>Click the name of the Assignment folder</li>
-                    <li>Choose
+                    <li>Select the name of the Assignment folder</li>
+                    <li>Select
                         <mark>Users without feedback</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> option in the pulldown
                         menu
                     </li>
-                    <li>Click the percentage information next to the document title to open document in feedback studio.</li>
+                    <li>Select the percentage information next to the document title to open document in feedback studio.</li>
                     <li>Add comments, recordings, quickmarks, and rubrics. </li>
                     </ul>
                     <p>Try this demo of <a target="_blank" href="http://turnitin.com/assets/en_us/media/feedback-studio-demo/">Feedback Studio.</a> <i class="fa fa-external-link" aria-hidden="true"></i></p>`
@@ -239,12 +243,14 @@
                         howtos: [
                             {
                                 title: "Create a Calendar Event",
-                                directionshtml: `<ul><li>Click
+                                directionshtml: `<ul><li>Select
                         <mark>Create Event</mark></li><li>Set details, dates, and <em>optionally</em> associate with content</li></ul>`
                             },
                             {
                                 title: "Manage Dates",
-                                directionshtml: `<p>Use the Manage Dates tool to view, edit, and offset the date availability and set the calendar status
+                                directionshtml: `
+                                <blockquote>Found in <mark>Course Admin</mark> on the course navigation menu and then <mark>Manage Dates</mark></blockquote>
+                                <p>Use the Manage Dates tool to view, edit, and offset the date availability and set the calendar status
                         of all content topics and modules, discussion topics and forums, assignment submissions folders,
                         grades categories and items, announcement items, and quizzes from one central location.  Read more about the <a target="_blank" href="https://documentation.brightspace.com/EN/le/manage_dates/instructor/manage_dates_intro_1.htm">Manage Dates tool. </a><i class="fa fa-external-link" aria-hidden="true"></i></p>  `
                             }
@@ -255,7 +261,7 @@
                         location: "Found on the course navigation menu",
                         howtos: [
                             {
-                                title: "Access Reports",
+                                title: "Progress Summary",
                                 directionshtml: `<p>Students and instructors can both access reports and details on progress through the course. This includes:
                     grades, objectives, content, discussions, assignment submission folder, quizzes, checklist, surveys,
                     and login reports. </p>`
@@ -268,15 +274,14 @@
                             {
                                 title: "Enroll a Student or Instructor",
                                 directionshtml: `<ul>
-                    <li>Click
-                        <mark>Add Participant</mark> |
+                    <li>Select <mark>Add Participant</mark> |
                         <mark>Add Existing User</mark>
                     </li>
                     <li>Search for their username</li>
                     <li>Select a role that they will have in their course (
                         <mark>Instructor</mark> or
                         <mark>Student</mark>)</li>
-                    <li>Check the box next to their name and
+                    <li>Select the box <i class="fa fa-check-square-o" aria-hidden="true"></i> next to their name and
                         <mark>Enroll Selected Users</mark>
                     </li>
                 </ul>
@@ -288,15 +293,14 @@
                                 title: "Unenroll a User",
                                 directionshtml: `<ul>
                     <li>Select the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the user(s) to unenroll</li>
-                    <li>Click
+                    <li>Select
                         <mark>unenroll</mark> at the top of the list</li>
                 </ul>`
                             },
                             {
                                 title: "Send Messages",
                                 directionshtml: `<ul><li>Select the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> next
-                    to the student(s) you would like to message</li><li>Click
-                    <mark>Message</mark>
+                    to the student(s) you would like to message</li><li>Select <mark>Message</mark>
                 </li></ul>`
 
                             }
@@ -318,8 +322,8 @@
                 <ul>
 
                     <li>Select a module from the Table of Contents</li>
-                    <li>Click
-                        <mark>New</mark> |
+                    <li>Select
+                        <mark>Upload / Create</mark> |
                         <mark>Create a File</mark>
                     </li>
                     <li>Enter a title
@@ -341,14 +345,13 @@
                             {
                                 title: "Add Files <small>(upload to manage files)</small>",
                                 directionshtml: ` <ul>
-                    <li>From the navbar click
-                        <mark>Course Admin</mark>
+                    <li>Select <mark>Course Admin</mark> on the course navigation menu
                     </li>
                     <li>
                         <mark>Manage Files</mark>
                     </li>
-                    <li>Click the upload icon and a pop-up window will appear</li>
-                    <li>Drag and drop files from your computer to the popup window or click the
+                    <li>Select <i class="fa fa-arrow-circle-up" aria-hidden="true"></i> <mark>Upload</mark> and a pop-up window will appear</li>
+                    <li>Drag and drop files from your computer to the popup window or select the
                         <mark>Upload</mark> button</li>
                 </ul>`
                             },
@@ -361,7 +364,7 @@
                         <mark>Compressed (zipped) folder</mark> Mac: <kbd>CTRL</kbd>-click |
                         <mark>Compress</mark>)</li>
                     <li>Upload the archive / zip file (see directions above for uploading a file)</li>
-                    <li>Locate the uploaded zip file, activate the context menu for the item, and chose the
+                    <li>Locate the uploaded zip file, activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> for the item, and chose the
                         <mark>Unzip</mark> option</li>
                     <li>Once files are unzipped, delete the original zip file</li>
                 </ul>`
@@ -371,12 +374,12 @@
                                 directionshtml: `     <ul>
 
                     <li>Select a module from the Table of Contents</li>
-                    <li>Click
+                    <li>Select
                         <mark>New</mark> |
                         <mark>Add from Manage Files</mark>
                     </li>
-                    <li>Check the boxes to the left of the files you want to add</li>
-                    <li>Click the
+                    <li>Select the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to the left of the files you want to add</li>
+                    <li>Select the
                         <mark>Add</mark> button</li>
                 </ul>`
                             },
@@ -384,8 +387,8 @@
                                 title: "Delete Modules or Topics",
                                 directionshtml: `<ul>
                     <li>Select the module from the Table of Contents</li>
-                    <li>Open the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the title</li>
-                    <li>Choose the
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the title</li>
+                    <li>Select the
                         <mark><i class="fa fa-trash" aria-hidden="true"></i> Delete</mark> option</li>
                 </ul>`
                             },
@@ -393,10 +396,10 @@
                                 title: "Hide or Reveal Topics",
                                 directionshtml: ` <ul>
                     <li>Select a module from the Table of Contents</li>
-                    <li>Click the
+                    <li>Select the
                         <mark>Bulk Edit</mark> button</li>
-                    <li>Click
-                        <mark>Published / Draft</mark> and choose your setting</li>
+                    <li>Select
+                        <mark>Published / Draft</mark> and select your setting</li>
                 </ul>`
                             },
                             {
@@ -404,19 +407,18 @@
                                 directionshtml: `    <ul>
 
                     <li>Select a module from the Table of Contents</li>
-                    <li>Click
-                        <mark>Add Existing Activities</mark>
+                    <li>Select
+                        <mark>Existing Activities</mark>
                     </li>
                     <li>Select the type of activity</li>
-                    <li>Click on an existing activity to link to it or use the
-                        <mark>Create New</mark> option</li>
+                    <li>Select an existing activity or create a new one by selecting the <mark>Upload / Create</mark> button</li>
                 </ul>`
                             },
                             {
                                 title: "Rearrange Modules or Topics",
                                 directionshtml: `    <ul>
-                    <li>Click and drag a module from the Table of Contents to a new location and release</li>
-                    <li>Hover over a module until it turns orange to move the selected item inside the module</li>
+                    <li>Select the three bars <i class="fa fa-bars" aria-hidden="true"></i> next to a module or topic to drag it to a new location and release</li>
+                    <li>When dragging an item, hover over a module until it turns orange to move the selected item inside the module</li>
                     <li>Drag topics from the main content pane to the Table of Contents to move topics between modules</li>
                 </ul>`
                             }
@@ -430,25 +432,23 @@
                                 title: "Copy Course Components",
                                 directionshtml: `<ul>
                     <li>Enter the Destination course</li>
-                    <li>From the navbar click
-                        <mark>Course Admin</mark>
+                    <li>Select <mark>Course Admin</mark> on the course navigation menu
                     </li>
                     <li>
                         <mark>Import / Export / Copy Components</mark>
                     </li>
-                    <li>Click
-                        <mark>Select Course</mark>
+                    <li>Select the <mark>Select Course</mark> button
                     </li>
-                    <li>Select the course to copy from and click
+                    <li>Select the course to copy from and select
                         <mark>Add Selected</mark>
                     </li>
-                    <li>Click the button marked
+                    <li>Select the button marked
                         <mark>recommended</mark> to select the items to copy
                     </li>
                     <li>Select your items to copy</li>
                     <li>
                         <mark>Continue</mark> after confirming your choices</li>
-                    <li>Click
+                    <li>Select
                         <mark>Finish</mark> and wait for the green check marks to appear</li>
                 </ul>`
                             },
@@ -459,7 +459,7 @@
 
                 <ul>
                     <li>Enter a course</li>
-                    <li>Click the mail icon <i class="fa fa-envelope" aria-hidden="true"></i> on the mini navigation menu</li>
+                    <li>Select the mail icon <i class="fa fa-envelope" aria-hidden="true"></i> on the mini navigation menu</li>
 
                 </ul>
 
@@ -475,20 +475,20 @@
                             },
                             {
                                 title: "Notifications",
-                                directionshtml: `<p>Find notification settings by clicking your name in the top-right corner of the page. Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.
+                                directionshtml: `<p>Find notification settings by selecting your name in the top-right corner of the page. Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.
                     See also, the Pulse App.</p>`
                             },
                             {
                                 title: "Pinning Courses",
                                 directionshtml: `<ul>
-                    <li>Click the course selection dropdown menu <i class="fa fa-caret-down" aria-hidden="true"></i> in the mini navigation bar at the top of the page</li>
+                    <li>Select the course selection dropdown menu <i class="fa fa-caret-down" aria-hidden="true"></i> in the mini navigation bar at the top of the page</li>
                     <li>Select the thumbtack <i class="fa fa-thumb-tack" aria-hidden="true"></i> next to a course title to pin
                         it to the top of the list</li>
                 </ul>`
                             },
                             {
                                 title: "Profile",
-                                directionshtml: `<p>Find profile settings by clicking your name in the top-right corner of the page. Add a profile image and encourage your students to do the same. Add further contact information, interests, and social networking connections.</p>`
+                                directionshtml: `<p>Find profile settings by selecting your name in the top-right corner of the page. Add a profile image and encourage your students to do the same. Add further contact information, interests, and social networking connections.</p>`
                             },
                             {
                                 title: "Pulse App",
@@ -505,14 +505,14 @@
                         howtos: [
                             {
                                 title: "Create a new Forum or Topics",
-                                directionshtml: ` <ul><li>Click the
+                                directionshtml: ` <ul><li>Select the
                         <mark>New</mark> button</li>
                         <li>Select either
                         <mark>New Forum</mark> or
                         <mark>New Topic</mark>
                     </li>
-                        <li>Complete the form: name, description, and availability (if desired)</li>
-                    <li>If it is a new forum then click
+                        <li>Complete the form: title, description, and availability (if desired)</li>
+                    <li>If it is a new forum then select
                         <mark>Save and Add Topic</mark> to complete the topic setup form</li>
                     <li>Use the
                         <mark>Assessment</mark> tab to link a topic to a grade item</li>
@@ -521,13 +521,14 @@
                             {
                                 title: "Grade a Discussion Topic",
                                 directionshtml: `<ul>
-                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> of a topic select
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> of a topic select
                         <mark>Assess Topic</mark>
                     </li>
-                    <li>Click on the
+                    <li>Select the
                         <mark>Topic Score</mark> link under the student’s name</li>
-                    <li>Enter score(s) and check the
-                        <mark>published</mark> box to send the score to the gradebook</li>
+                    <li>Enter score(s) and feedback</li>
+                    <li>Select the
+                        <mark>published</mark> box <i class="fa fa-check-square-o" aria-hidden="true"></i> to send the score to the gradebook</li>
                     <li>
                         <mark>Save and Close</mark>
                     </li>
@@ -544,15 +545,15 @@
                                 directionshtml: `<p>Students cannot see final adjusted or calculated grades until you release it to them.</p>
 <h4>Grade to Release</h4>
                 <ul>
-                    <li>From within the gradebook click <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i>
-                    </li><li>Click the <mark>Calculation Options</mark> tab </li>
+                    <li>From within the gradebook select <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i>
+                    </li><li>Select the <mark>Calculation Options</mark> tab </li>
                     <li>Select whether the adjusted or calculated
                         grade is released</li>
                         <li><mark>Save</mark> and <mark>Close</mark></li>
                         </ul>
                         <h4>Grade Scheme and Display</h3>
                         <ul>
-                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the final grade item, click <mark>edit</mark></li>
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the final grade item, select <mark>edit</mark></li>
                     <li>Use the pulldown menu <i class="fa fa-caret-down" aria-hidden="true"></i> to select desired Grade Scheme</li>
                     <li>Use Display Options to set what your students will see</li>
                     <li><mark>Save and Close</mark></li>
@@ -560,19 +561,19 @@
                     </ul>
                       <h4>Release</h4>
                       <ul>
-                    <li>From the context menu next to
-                        <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> click
+                    <li>Activate the context menu next to
+                        <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> select
                         <mark>Grade All</mark>
                     </li>
                     <li>At the top of the page next to
                         <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> activate the context menu and select
                         <mark>Recalculate All</mark>
                     </li>
-                    <li>For Adjusted grade, choose
+                    <li>For Adjusted grade, select
                         <mark>Transfer All</mark> also from the <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> context menu at the top of the page</li>
                     <li>Adjust any values in the Adjusted Grades column and <mark>Save</mark></li>
-                    <li>From the context menu next to
-                        <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> click
+                    <li>Activate the context menu next to
+                        <mark>Final Grade</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> select
                         <mark>Release All</mark>
                     </li>
                     <li>
@@ -583,15 +584,15 @@
                             {
                                 title: "Create Grade Items or Categories",
                                 directionshtml: `<ul>
-                    <li>Click the <mark>Manage Grades</mark> tab </li>
-                    <li>Click
+                    <li>Select the <mark>Manage Grades</mark> tab </li>
+                    <li>Select
                         <mark>New</mark></li>
-                    <li>Choose either
+                    <li>Select either
                         <mark>Item</mark> or
                         <mark>Category</mark> in the context menu <i class="fa fa-caret-down" aria-hidden="true"></i></li>
                     <li>Name the item or category and make property selections</li>
                     <li>
-                        Click <mark>Save</mark> or click <mark>Save and New</mark> to continue adding more grade items
+                        Select <mark>Save</mark> or select <mark>Save and New</mark> to continue adding more grade items
                     </li>
                 </ul>`
                             },
@@ -599,10 +600,9 @@
                                 title: "Drop lowest grades in a category",
                                 directionshtml: `<ul>
 
- <li>Click the <mark>Manage Grades</mark> tab</li>
-                    <li>Click on a Category name</li>
-                    <li>Check the box next to
-                        <mark>Distribute Points Evenly</mark>
+ <li>Select the <mark>Manage Grades</mark> tab</li>
+                    <li>Select a Category name</li>
+                    <li>Select the box next to <i class="fa fa-check-circle-o" aria-hidden="true"></i> <mark>Distribute (Weight / Points) Evenly</mark>
                     </li>
                     <li>Set the points for each item</li>
                     <li>Enter the number of highest or lowest items to drop </li>
@@ -614,8 +614,8 @@
                             {
                                 title: "Edit multiple grade items",
                                 directionshtml: `<ul>
-                    <li>Check the top box <i class="fa fa-check-square-o" aria-hidden="true"></i> to select all grade items</li>
-                    <li>Click
+                    <li>Select the top box <i class="fa fa-check-square-o" aria-hidden="true"></i> to select all grade items</li>
+                    <li>Select
                         <mark>Bulk Edit</mark>
                     </li>
                     <li>Make changes and
@@ -636,8 +636,8 @@
                             {
                                 title: "Enter Grades by Student",
                                 directionshtml: `     <ul>
-                   <li>Click the <mark>Enter Grades</mark> tab</li>
-                    <li>Click on a student’s name</li>
+                   <li>Select the <mark>Enter Grades</mark> tab</li>
+                    <li>Select a student’s name</li>
                     <li>Enter grades for each item for the student</li>
                     <li>
                         <mark>Save</mark>
@@ -647,8 +647,8 @@
                             {
                                 title: "Extra Credit Items",
                                 directionshtml: `  <ul>
-                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to a grade item and click <mark>edit</mark></li>
-                    <li>Check the
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to a grade item and select <mark>Edit Grade Item</mark></li>
+                    <li>Select the
                         <mark>Bonus</mark> option</li>
                     <li>
                         <mark>Save and Close</mark>
@@ -658,8 +658,8 @@
                             {
                                 title: "Re-order Gradebook Items",
                                 directionshtml: `        <ul>
-                    <li>Click the <mark>Manage Grades</mark> tab</li>
-                    <li>Click the
+                    <li>Select the <mark>Manage Grades</mark> tab</li>
+                    <li>Select the
                         <mark>More Actions</mark> button</li>
                         <li>Select the
                         <mark>Reorder</mark> option</li>
@@ -672,20 +672,20 @@
                             {
                                 title: "Show / Hide points / scheme / color",
                                 directionshtml: `        <ul>
-                    <li>Click <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i>  in the top-right corner of the gradebook</li>
+                    <li>Select <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i>  in the top-right corner of the gradebook</li>
                     <li>On the
-                        <mark>Personal Display Options</mark> tab, check the boxes in the Grade Details section to
+                        <mark>Personal Display Options</mark> tab, Select the boxes in the Grade Details section to
                         <mark>show points, grade scheme symbol (A, B, C), or grade scheme color</mark>
                     </li>
                     <li>Set student view properties on the
-                        <mark>Org Unit Display</mark> Options tab </li>
+                        <mark>Student View Display Options</mark> tab </li>
                 </ul>`
                             },
                             {
                                 title: "Wizard for Grades Setup",
                                 directionshtml: `<ul>
-                    <li>Click the <mark>Setup Wizard</mark> tab</li>
-                    <li>Click <mark>Start</mark> and answer the questions to define your gradebook settings - weighted, grade scheme, display options, etc.
+                    <li>Select the <mark>Setup Wizard</mark> tab</li>
+                    <li>Select <mark>Start</mark> and answer the questions to define your gradebook settings - weighted, grade scheme, display options, etc.
                     </li></ul>
                         <em>Note:</em> all these settings can be modified at any time by going to
                         <mark>Settings</mark> <i class="fa fa-cog" aria-hidden="true"></i> from within the gradebook.
@@ -696,48 +696,33 @@
                     {
                         title: "Groups",
                         location: "Found in <mark>Course Admin</mark> on the course navigation menu and then <mark>Groups</mark>",
+                        info: "Groups can be automatically generated, manually managed, or even self-enrolling.",
                         howtos: [
                             {
-                                title: "Auto-Generated Groups",
+                                title: "Create Groups",
                                 directionshtml: `<ul>
                    
-                    <li>Click
+                    <li>Select
                         <mark>New Category</mark> and provide a name and description</li>
                     <li>Select enrollment style from the menu (
                         <mark>Groups of #</mark> or
                         <mark># of Groups</mark>), entering the number desired</li>
-                    <li>Check the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to add Discussions or Assignments (if needed)</li>
+                    <li>Select the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to add Discussions or Assignments (if needed)</li>
                     <li>
                         <mark>Save</mark>
                     </li>
-                    <li><em>Optionally,</em> click the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the group category and click <mark>Enroll Users</mark> to manually manage enrollments</li>
-                </ul>`
-                            },
-                            {
-                                title: "Manually Assigned Groups",
-                                directionshtml: `<ul>
                    
-                    <li>Click
-                        <mark>New Category</mark> and provide a name and description</li>
-                    <li>Select enrollment style from the menu (
-                        <mark># of Groups - No Auto Enrollments</mark>), entering the number of desired groups</li>
-                    <li>Check the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to add Discussions or Assignments (if needed)</li>
-                    <li>
-                        <mark>Save</mark>
-                    </li>
-                    <li>Click the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the group category and click <mark>Enroll Users</mark> to manage enrollments</li>
                 </ul>`
                             },
                             {
-                                title: "Self-Enrollment",
-                                directionshtml: `<ul><li>Click <mark>New Category</mark> and provide a name and description</li>
-                    <li>Select self-enrollment style from the menu (
-                        <mark>Groups of # - Self Enrollment</mark> or
-                        <mark># of Groups - Self Enrollment</mark>), entering the number desired</li>
-                        <li>Specify optional enrollment deadline</li>
-                    <li>Check the boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> to add Discussions or Assignments (if needed)</li>
-                    <li><mark>Save</mark></li>
-                    <li><em>Optionally,</em> click the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the group category and click <mark>Enroll Users</mark> to manually manage enrollments</li></ul>`
+                                title: "Edit Groups",
+                                directionshtml: `<ul>
+                  
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the group category and select <mark>Enroll Users</mark> to manage enrollments</li>
+                 <li>
+                        <mark>Save</mark>
+                    </li>
+                    </ul>`
                             }
                         ]
                     },
@@ -748,7 +733,7 @@
                             {
                                 title: "Create a Quiz",
                                 directionshtml: `<ul>
-                    <li>Click
+                    <li>Select
                         <mark>New Quiz</mark>
                     </li>
                     <li>Enter a quiz name and <mark>Add / Edit Questions</mark> on the
@@ -757,7 +742,7 @@
                         <mark>Restrictions</mark> tab to set dates of availability and time limits</li>
                     <li>Associate a quiz with a Grade item on the
                         <mark>Assessment</mark> tab</li>
-                    <li>Check the
+                    <li>Select the
                         <mark>Auto Export to Grades</mark> and
                         <mark>Automatic Grade</mark> options if desired</li>
                     <li>Set the number of attempts allowed</li>
@@ -768,19 +753,18 @@
                             {
                                 title: "Grade a Quiz",
                                 directionshtml: `   <ul>
-                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name choose the
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name select the
                         <mark>Grade</mark> option</li>
-                    <li>Click
-                        <mark>attempt</mark> under student’s name</li>
+                    <li>Select the <mark>attempt</mark> under the student’s name</li>
                     <li>Scroll down to view/grade answers and give feedback for the student</li>
                 </ul>`
                             },
                             {
                                 title: "Quick Edit Multiple Quizzes",
                                 directionshtml: ` <ul>
-                    <li>Use the check boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> next to quizzes or select box <i class="fa fa-check-square-o" aria-hidden="true"></i> at the top or bottom of the list to select all
+                    <li>Select the check boxes <i class="fa fa-check-square-o" aria-hidden="true"></i> next to quizzes or the select box <i class="fa fa-check-square-o" aria-hidden="true"></i> at the top or bottom of the list to select all
                     </li>
-                    <li>Click the
+                    <li>Select the
                         <mark>Bulk Edit</mark>
                     </li>
                     <li>Make changes to name, category, active status, or attempt number</li>
@@ -792,12 +776,14 @@
                             {
                                 title: "Questions - Add and Edit",
                                 directionshtml: ` <ul>
-                    <li>Access the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz title</li>
-                    <li>Click the
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz title</li>
+                    <li>Select <mark>Edit</mark></li>
+                    
+                    <li>Select the
                         <mark>Add/Edit Questions</mark> button found under the <mark>Properties</mark> tab
                     </li>
                     <li>Select the <mark>New</mark> button to add questions</li>
-                    <li>When finished, click 
+                    <li>When finished, select 
                         <mark>Done Editing Questions</mark>
                     </li>
                 </ul>`
@@ -805,23 +791,23 @@
                             {
                                 title: "Randomize Questions",
                                 directionshtml: ` <ul>
-                    <li>From the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name choose the
-                        <mark>Edit</mark> option</li>
-                    <li>Toggle the <mark>shuffle order of questions</mark> checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> on the <mark>Properties</mark> tab
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name</li>
+                   <li>Select <mark>Edit</mark></li>
+                    <li>Select the <mark>shuffle order of questions</mark> checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> on the <mark>Properties</mark> tab
                     <li><mark>Save and Close</mark>
                 </ul>`
                             },
                             {
                                 title: "Reset a Quiz Attempt",
                                 directionshtml: `  <ul>
-                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name and choose
+                    <li>Activate the context menu <i class="fa fa-caret-down" aria-hidden="true"></i> next to the quiz name and select
                         <mark>Grade</mark> option</li>
-                    <li>Click the
-                        <mark>Display Options</mark> button and check
+                    <li>Select the
+                        <mark>Display Options</mark> button and select
                         <mark>Allow Reset</mark> (if necessary)</li>
-                    <li>Check the box <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the student’s attempt</li>
-                    <li>Click the trashcan icon <i class="fa fa-trash" aria-hidden="true"></i> at the top of the listing</li>
-                    <li>Click
+                    <li>Select the box <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the student’s attempt</li>
+                    <li>Select the trashcan icon <i class="fa fa-trash" aria-hidden="true"></i> at the top of the listing</li>
+                    <li>Select
                         <mark>Yes</mark>
                     </li>
                 </ul>`
@@ -829,10 +815,10 @@
                             {
                                 title: "Special Access and Extended Time",
                                 directionshtml: `    <ul>
-                    <li>Click on the Quiz name</li>
-                    <li>Click on the
+                    <li>Select the Quiz name</li>
+                    <li>Select the
                         <mark>Restrictions</mark> tab and scroll down to the bottom</li>
-                    <li>Click on the
+                    <li>Select the
                         <mark>Add Users to Special Access</mark> button</li>
                     <li>Make choices and settings for individuals or groups as needed</li>
                     <li>Save changes when finished</li>
@@ -842,8 +828,7 @@
                     },
                     {
                         title: "Support",
-                        info: `<p>From the
-                    <mark>Course Home </mark>page in any course you can click on the
+                        info: `<p>From the Course Homepage in any course you can select the
                     <mark>D2L Help</mark> tab at the bottom right of the screen to ask any questions you might have about your
                     course or about D2L in general.</p>
 `,
@@ -856,7 +841,7 @@
                             },
                             {
                                 title: "Official Brightspace Documentation",
-                                directionshtml: `   <p>Click
+                                directionshtml: `   <p>Select
                     <mark>Resources</mark> |
                     <mark>D2L Documentation</mark> at the top course selection screen when you first login. Or access <a href="https://documentation.brightspace.com" target="_blank">the documentation here</a> <i class="fa fa-external-link" aria-hidden="true"></i></p>`
                             }

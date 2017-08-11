@@ -5,24 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <meta http-equiv="refresh" content="10">   -->
     <title>D2L Quick Reference</title>
-
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  -->
-
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossorigin="anonymous">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
-
-    <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>  -->
-
-
 
     <style>
         a:link,
@@ -66,7 +54,8 @@
             body {
                 font-size: .8rem;
             }
-            mark, kbd{
+            mark,
+            kbd {
                 color: inherit;
                 background-color: #f0f0f0;
                 /* text-decoration: underline; */
@@ -75,7 +64,7 @@
             .directions a[href]:after {
                 content: " (" attr(href) ") ";
             }
-            .fa-external-link{
+            .fa-external-link {
                 display: none;
             }
              ::first-letter {
@@ -93,9 +82,11 @@
     <div id="app">
         <div id="masthead">
             <div class="container">
-                <h1>{{title}}
+                <h1>{{title}} <small>({{year}})</small>
                     <p class="lead"><a v-bind:href="subtitle.url">{{subtitle.text}}</a></p>
                 </h1>
+                <!-- <p>{{address}}</p> -->
+                <hr>
             </div>
             <!--/container-->
         </div>
@@ -128,8 +119,10 @@
                             <div class="directions" v-html="howto.directionshtml"></div>
                         </div>
                         <!--/howto-->
+                        <hr>
                     </div>
                     <!--/tool-->
+                    <p>{{address}}</p>
                 </div>
                 <!--/right-->
             </div>
@@ -144,6 +137,8 @@
             el: "#app",
             data: {
                 title: "Brightspace D2L Quick Reference",
+                year: "2017",
+                address: 'https://blogs.pstcc.edu/elearn/d2l-reference/',
                 subtitle: {
                     text: "Pellissippi State Community College",
                     url: "http://www.pstcc.edu/"

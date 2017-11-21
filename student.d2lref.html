@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- cSpell:ignore directionslist, Brightspace, Pellissippi, body, directionshtml, quickmarks, checkmarks, Turnitin, howto, unenroll, howtos, classlist, crossorigin, gradebook -->
+<!-- cSpell:ignore docx, directionslist, Brightspace, Pellissippi, body, directionshtml, quickmarks, checkmarks, Turnitin, howto, unenroll, howtos, classlist, crossorigin, gradebook -->
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="20">
-  <title>D2L Quick Reference</title>
+  <!-- <meta http-equiv="refresh" content="20"> -->
+  <title>D2L Reference</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">
-  <!-- TODO remove spaces from ids for headings -->
   <style>
     a:link,
     a:visited {
@@ -22,13 +21,16 @@
 
     a:active,
     a:hover {
+      /* text-decoration: underline; */
+    }
+
+    .directions ul li a{
       text-decoration: underline;
     }
 
-li li:hover {
+    li li:hover {
       border-right: 2px solid black;
-  
-}
+    }
 
     blockquote {
       border-left: 5px solid #f0f0f0;
@@ -42,6 +44,7 @@ li li:hover {
     @media (max-width: 1000px) {}
 
     @media print {
+      
       h1 {
         font-size: 1.3rem;
       }
@@ -67,9 +70,12 @@ li li:hover {
         /* text-decoration: underline; */
         font-weight: bold;
       }
-      .directions a[href]:after {
+      .directions a[href].ext:after {
         content: " (" attr(href) ") ";
       }
+      .directions ul li a{
+      text-decoration: none;
+    }
       .fa-external-link {
         display: none;
       }
@@ -80,7 +86,7 @@ li li:hover {
       /* .main-content {
                 height: 100%;
             } */
-      ul {
+      ul, .howto {
         page-break-inside: avoid;
       }
     }
@@ -160,9 +166,10 @@ li li:hover {
     var app = new Vue({
       el: "#app",
       data: {
-        title: "Brightspace D2L Quick Reference - Student",
+        title: 'Brightspace D2L Quick Reference - Student',
         year: "2018",
-        address: "https://blogs.pstcc.edu/elearn/d2l-reference/",
+        images: true,
+        address: "http://sms.pstcc.edu/ets/ets/student.d2lref.html", 
         subtitle: {
           text: "Pellissippi State Community College",
           url: "http://www.pstcc.edu/"
@@ -172,52 +179,51 @@ li li:hover {
             title: 'Announcements',
             location: "Found on the course homepage",
             info:
-              "Subscribe or read instructor messages, course information, announcements, and updates.",
+              'Subscribe or read instructor messages, course information, announcements, and updates.',
             howtos: [
               {
-                title: "Dismiss an Announcement",
+                title: 'Dismiss an Announcement',
                 directionslist: [
-                  `Select the <mark>X</mark> next to an announcement
-                                heading to dismiss an announcement from your view only.`
+                  'Select the <mark>X</mark> next to an announcement heading to dismiss an announcement from your view only.'
                 ]
               },
               {
-                title: "Subscribe to Announcements",
+                title: 'Subscribe to Announcements',
                 directionslist: [
-                  "Receive announcements through texts, phone notifications or by email. See Pulse App and Notifications."
+                  'Receive announcements through texts, phone notifications or by email. See <a href="#pulseapp">Pulse App</a> and <a href="#notifications">Notifications</a>.'
                 ]
               }
             ]
           },
           {
-            title: "Assignments",
+            title: 'Assignments',
             location: "Found on the course navigation menu",
             howtos: [
               {
-                title: "Confirm Assignment Submission",
+                title: 'Confirm Assignment Submission',
                 directionslist: [
-                  "Every successful assignment submission will result in an automatic course message.",
+                  'Every successful assignment submission will result in an automatic course message.',
                   'While in the course, select the mail <i class="fa fa-envelope" aria-hidden="true"></i> icon from the top navigation menu',
-                  "Select the mail message with the subject 'Assignment Submission Receipt'"
+                  'Select the mail message with the subject \'Assignment Submission Receipt\''
                 ]
               },
               {
-                title: "Submit File(s)",
+                title: 'Submit File(s)',
                 directionslist: [
-                  "Select the title of the assignment folder",
-                  "Review instructor directions or rubric",
-                  "Select <mark>Add a File | Upload</mark>",
-                  "Select the file or multiple files (if enabled by the instructor)",
-                  "Select <mark>Add | Submit</mark>",
-                  "Note: depending on the instructor's assignment settings, when another file is uploaded it may replace the previous file or it might add the new another file.",
-                  "Supported file types: text documents (doc, docx, pdf, ppt)(not Apple iWork files), images (jpg, png, gif), media (mpeg, mp3, mp4, mov), web documents (htm, html)"
+                  'Select the title of the assignment folder',
+                  'Review instructor directions or rubric',
+                  'Select <mark>Add a File | Upload</mark>',
+                  'Select the file or multiple files (if enabled by the instructor)',
+                  'Select <mark>Add | Submit</mark>',
+                  'Note: depending on the instructor\'s assignment settings, when another file is uploaded it may replace the previous file or it might add the new uploaded file.',
+                  'Supported file types: text documents (doc, docx, pdf, ppt)(not Apple iWork files), images (jpg, png, gif), media (mpeg, mp3, mp4, mov), web documents (htm, html)'
                 ]
               },
               {
-                title: "View Feedback",
+                title: 'View Feedback',
                 directionslist: [
                   'Select <i class="fa fa- comment - o" aria-hidden="true"></i> <mark>View</mark> which appears next to the title of the assignment folder in the \'Feedback\' column',
-                  "Review instructor feedback or download the attached feedback files the instructor has included"
+                  'Review instructor feedback or download the attached feedback files the instructor has included'
                 ]
               },
               {
@@ -226,71 +232,91 @@ li li:hover {
                 directionslist: [
                   'If the instructor is using Turnitin<i class="fa fa-registered" aria-hidden="true"></i> then the feedback may be in \'Feedback Studio\'',
                   'Select <i class="fa fa-comment-o" aria- hidden="true" ></i > <mark>View</mark> in the \'Feedback\' column next to the title of the assignment folder ',
-                  'Select either the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> similarity number or select the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> Grademark<i class="fa fa-registered" aria-hidden="true"></i> <i class="fa fa-check-square-o" aria-hidden="true"></i> icon'
+                  'Select either the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> similarity percentage number or select the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> Grademark<i class="fa fa-registered" aria-hidden="true"></i> <i class="fa fa-check-square-o" aria-hidden="true"></i> icon'
                 ]
               },
               {
-                title: "View Submission(s)",
+                title: 'View Submission(s)',
                 directionslist: [
-                  "Select the number in the 'Submissions' column next to the title of the assignment folder",
-                  "Select the file(s) to download"
+                  'Select the number in the \'Submissions\' column next to the title of the assignment folder',
+                  'Select the file(s) to download'
                 ]
               }
             ]
           },
           {
-            title: "Calendar",
-            location:
-              "Found on the course navigation menu, course homepage, and the organization homepage. ",
-            info:
-              "Course items, quizzes, assignments, etc. that the instructor has given dates to will automatically appear on the course calendar.",
+            title: 'Attendance',
+            location: 'Found on the course homepage in the \'Additional Course Tools\' widget',
             howtos: [
               {
-                title: "Create a Task",
+                title: 'View Class Attendance',
                 directionslist: [
-                  "Select <mark>Add a task...</mark>",
-                  "Type the task"
+                 'Select the attendance register from teh \'Register Name\' column',
+                 'Review class sessions and \'Attendance Status\'',
+                 'Note: if the \'Additional Course Tools\' widget cannot be found then please contact the instructor'
                 ]
               },
               {
-                title: "Subscribe to the Calendar",
+                title: 'Subscribe to Announcements',
                 directionslist: [
-                  "Receive event reminders through texts, phone notifications or by email. See Pulse App and Notifications."
+                  'Receive announcements through texts, phone notifications or by email. See <a href="#pulseapp">Pulse App</a> and <a href="#notifications">Notifications</a>.'
                 ]
               }
             ]
           },
           {
-            title: "Class Progress",
+            title: 'Calendar',
+            location:
+              'Found on the course navigation menu, course homepage, and the organization homepage. ',
+            info:
+              'Course items, quizzes, assignments, etc. that the instructor has given dates to will automatically appear on the course calendar.',
+            howtos: [
+              {
+                title: 'Create a Task',
+                directionslist: [
+                  'Select <mark>Add a task...</mark>',
+                  'Type the task'
+                ]
+              },
+              {
+                title: 'Subscribe to the Calendar',
+                directionslist: [
+                  'Receive event reminders through texts, phone notifications or by email. See <a href="#pulseapp">Pulse App</a> and <a href="#notifications">Notifications</a>.'
+                ]
+              }
+            ]
+          },
+          {
+            title: 'Class Progress',
             location: "Found on the course navigation menu",
             info: `Access reports and details on progress through the course. This includes: 
             grades, objectives, content, discussions, assignment submission folder, quizzes, checklist, surveys, and login statistics.`,
             howtos: [
               {
-                title: "Save or Print Progress Record",
+                title: 'Save or Print Progress Record',
                 directionslist: [
                   'Select <i class="fa fa-print" aria-hidden="true"></i><mark>Print</mark> in the right-corner of the progress page',
                   'Select <i class="fa fa-cog" aria-hidden="true"></i> <mark>Settings</mark> in the right-corner of the progress page',
-                  "Select the progress components or details to display",
-                  "<mark>Save and Close</mark>",
-                  "Select the <mark>Print</mark> button at the bottom and choose the printer or export to PDF"
+                  'Select the progress components or details to display',
+                  '<mark>Save and Close</mark>',
+                  'Select the <mark>Print</mark> button at the bottom and choose the printer or export to PDF'
                 ]
               }
             ]
           },
           {
-            title: "Classlist",
+            title: 'Classlist',
             location: "Found on the course navigation menu",
             howtos: [
               {
-                title: "Send Messages",
+                title: 'Send Messages',
                 directionslist: [
                   `Select the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> next
                         to the student(s) or instructor to message</li><li>Select <mark>Message</mark>`
                 ]
               },
               {
-                title: "View Profiles",
+                title: 'View Profiles',
                 directionslist: [
                   `Select the image or image placeholder next to the student or instructor`
                 ]
@@ -298,102 +324,102 @@ li li:hover {
             ]
           },
           {
-            title: "Content",
+            title: 'Content',
             location: "Found on the course navigation menu",
             howtos: [
               {
-                title: "Bookmark Topics",
+                title: 'Bookmark Topics',
                 directionslist: [
-                  "Select a topic",
+                  'Select a topic',
                   'Select the bookmark <i class="fa fa-bookmark-o" aria-hidden="true"></i> icon',
                   'Review marked topics from the table of contents by selecting <i class="fa fa-bookmark" aria-hidden="true"></i> <mark>Bookmarks</mark> from the left navigation menu'
                 ]
               },
               {
-                title: "Course Overview",
+                title: 'Course Overview',
                 directionslist: [
                   `Select <mark>Overview</mark> from the left navigation menu`
                 ]
               },
               {
-                title: "Course Schedule",
+                title: 'Course Schedule',
                 directionslist: [
                   `Select <mark>Course Schedule</mark> from the left navigation menu`
                 ]
               },
               {
-                title: "Download Topic(s) | Module(s)",
+                title: 'Download Topic(s) | Module(s)',
                 directionslist: [
-                  "While viewing a topic, select the <mark>Download</mark> button to download that topic",
-                  "While viewing a list of topics in a module, select the <mark>Download</mark> button to download all topics in that module"
+                  'While viewing a topic, select the <mark>Download</mark> button to download that topic',
+                  'While viewing a list of topics in a module, select the <mark>Download</mark> button to download all topics in that module'
                 ]
               },
               {
-                title: "Track Progress",
+                title: 'Track Progress',
                 directionslist: [
-                  "If enabled by the instructor, number counts will appear next to modules in the table of contents as well as a progress bar at the top of each module",
-                  "These numbers indicate topics that have not yet been viewed"
+                  'If enabled by the instructor, number counts will appear next to modules in the table of contents as well as a progress bar at the top of each module',
+                  'These numbers indicate topics that have not yet been viewed'
                 ]
               },
               {
-                title: "Print Topic",
+                title: 'Print Topic',
                 directionslist: [
-                  "Select the topic",
-                  "Select the <mark>Download</mark> button to download that topic"
+                  'Select the topic',
+                  'Select the <mark>Download</mark> button to download that topic'
                 ]
               },
               {
-                title: "Search for Topics",
+                title: 'Search for Topic(s)',
                 directionslist: [
-                  "Enter search criteria in the textbox at the top of the left navigation menu",
-                  "This searches topic titles and descriptions but not the content within the topic"
+                  'Enter search criteria in the textbox at the top of the left navigation menu',
+                  'This searches topic titles and descriptions but not the content within the topic'
                 ]
               }
             ]
           },
           {
-            title: "Course Admin and Organization",
+            title: 'Course Admin and Organization',
 
             howtos: [
               {
-                title: "Access Messages",
+                title: 'Access Messages',
                 directionslist: [
-                  "Enter a course",
+                  'Enter a course',
                   'Select the mail icon <i class="fa fa-envelope" aria-hidden="true"></i> on the top navigation menu'
                 ]
               },
               {
-                title: "Send Messages",
-                directionslist: ["See classlist messaging"]
+                title: 'Send Messages',
+                directionslist: ['See classlist <a href="#sendmessages">Send Messages</a>']
               },
               {
-                title: "Notifications",
+                title: 'Notifications',
                 directionslist: [
-                  "Find notification settings by selecting your name in the top-right corner of the page",
-                  "Enroll in notifications to receive course updates in email or mobile devices",
-                  "See also, the Pulse App"
+                  'Find notification settings by selecting your name in the top-right corner of the page',
+                  'Enroll in notifications to receive course updates in email or mobile devices',
+                  'See also, the <a href="#pulseapp">Pulse App</a>'
                 ]
               },
               {
-                title: "Pin | Unpin Courses",
+                title: 'Pin | Unpin Courses',
                 directionslist: [
-                  "Current courses should automatically appear on the main homepage upon first logging in, but if they do not:",
-                  "Select <mark>View All Courses</mark>",
+                  'Current courses should automatically appear on the main homepage upon first logging in, but if they do not:',
+                  'Select <mark>View All Courses</mark>',
                   'Hover over the course image and select the option <i class="fa fa-ellipsis-h" aria-hidden="true"></i> ellipsis',
-                  "Select <mark>Pin</mark> or <mark>Unpin</mark>"
+                  'Select <mark>Pin</mark> or <mark>Unpin</mark>'
                 ]
               },
               {
-                title: "Profile",
+                title: 'Profile',
                 directionslist: [
-                  "Select your name in the top-right corner of the page",
-                  "Add a profile image or further contact information, interests, and social networking connections"
+                  'Select your name in the top-right corner of the page',
+                  'Add a profile image or further contact information, interests, and social networking connections'
                 ]
               },
               {
-                title: "Pulse App",
+                title: 'Pulse App',
                 directionslist: [
-                  "View course updates, content, dates, announcements, and grades for all courses",
+                  'View course updates, content, dates, announcements, and grades for all courses',
                   `Download the app for iPhone and Android devices!
                         <a class= "ext" href="https://www.d2l.com/products/pulse/" target="_blank">Download the Pulse App </a><i class="fa fa-external-link" aria-hidden="true"></i></p>`
                 ]
@@ -401,135 +427,158 @@ li li:hover {
             ]
           },
           {
-            title: "Discussions",
+            title: 'Discussions',
             location: "Found on the course navigation menu",
             info:
-              "Instructors can create forums, topics, threads, and replies. Students can create threads and replies if a topic is available.",
+              'Instructors can create forums, topics, threads, and replies. Students can create threads and replies if a topic is available.',
             howtos: [
               {
-                title: "Create Thread | Reply",
+                title: 'Create Thread | Reply',
                 directionslist: [
-                  "Access the forum topic or thread",
-                  "Select the <mark>Start a New Thread</mark> button or the <mark>Reply to Thread</mark> button",
-                  "Enter a subject and desired content: text, images, media, video, tables, attachments, etc.",
-                  "Note: some instructors require that a thread be created before thread replies are enabled in a topic"
+                  'Access the forum topic or thread',
+                  'Select the <mark>Start a New Thread</mark> button or the <mark>Reply to Thread</mark> button',
+                  'Enter a subject and desired content: text, images, media, video, tables, attachments, etc.',
+                  'Note: some instructors require that a thread be created before thread replies are enabled in a topic'
                 ]
               },
               {
-                title: "Change Discussions Settings",
+                title: 'Change Discussions Settings',
                 directionslist: [
                   'Select <i class="fa fa-cog" aria-hidden="true"></i> <mark>Settings</mark> in the top-right of the discussions',
-                  "Select the desired view and display settings",
-                  "<mark>Save</mark>"
+                  'Select the desired view and display settings',
+                  '<mark>Save</mark>'
                 ]
               },
               {
-                title: "Subscribe to Discussions",
+                title: 'Subscribe to Discussions',
                 directionslist: [
-                  "Receive updates through texts, phone notifications or by email. See Pulse App and Notifications"
+                  'Receive updates through texts, phone notifications or by email. See <a href="#pulseapp">Pulse App</a> and <a href="#notifications">Notifications</a>'
                 ]
               }
             ]
           },
           {
-            title: "Grades",
+            title: 'Grades',
             location: "Found on the course navigation menu",
             howtos: [
               {
-                title: "Print Grade Results",
+                title: 'Save | Print Grade Results',
                 directionslist: [
                   'Select <i class="fa fa-print" aria-hidden="true"></i><mark>Print</mark> in the right-corner of the grades page',
-                  "Choose the printer or export to PDF"
+                  'Choose the printer or export to PDF'
                 ]
               },
               {
-                title: "View Final Grade",
+                title: 'View Final Grade',
                 directionslist: [
-                  "Final grades or current running grade will be totaled and visible at the top of the page above the grade items",
-                  "This grade is only visible when the instructor releases it.  If it is not visible then contact the instructor",
-                  "Further grade information is also available in <mark>Class Progress</mark> on the navigation menu. See Class Progress"
+                  'Final grades or current running grade will be totaled and visible at the top of the page above the grade items',
+                  'This grade is only visible when the instructor releases it.  If it is not visible then contact the instructor',
+                  'Further grade information is also available in <mark>Class Progress</mark> on the navigation menu. See <a href="#classprogress">Class Progress</a>'
                 ]
               },
               {
-                title: "View Grade Feedback",
+                title: 'View Grade Feedback',
                 directionslist: [
-                  "If an instructor has included a feedback comment with the grade item then it will appear in the 'Feedback' column on the grades page",
-                  "Rubrics, grade averages, and distribution statistics will appear as an icon next to the grade item title if the instructor has made them available"
+                  'If an instructor has included a feedback comment with the grade item then it will appear in the \'Feedback\' column on the grades page',
+                  'Rubrics, grade averages, and distribution statistics will appear as an icon next to the grade item title if the instructor has made them available'
                 ]
               }
             ]
           },
           {
-            title: "Groups",
+            title: 'Groups',
             location:
-              "Found in the 'Additional Course Tools' widget on the course homepage",
+              'Found in the \'Additional Course Tools\' widget on the course homepage',
             // info: "If an instructor is using groups can be automatically generated, manually managed, or even self-enrolling.",
             howtos: [
               {
-                title: "Enroll in a Group",
+                title: 'Enroll in a Group',
                 directionslist: [
-                  "If an instructor has enabled self-enrolling groups then:",
-                  "Select the <mark>View Available Groups</mark> button",
-                  "Select a group to join",
-                  "Note: students cannot change or remove themselves from a group. Contact the instructor."
+                  'If an instructor has enabled self-enrolling groups then:',
+                  'Select the <mark>View Available Groups</mark> button',
+                  'Select a group to join',
+                  'Note: students cannot change or remove themselves from a group. Contact the instructor.'
                 ]
               },
               {
-                title: "View Group Enrollment(s)",
+                title: 'Message Group Members',
                 directionslist: [
-                  "If an instructor is using groups then verify group enrollment by select the number in the 'Members' column next to the group or group category",
-                  "View other group enrollments from the 'Classlist' by using the 'View By' Groups dropdown menu at the top of the student list"
-                ]
-              },
-              {
-                title: "Message Group Members",
-                directionslist: [
-                  "The instructor may have set up discussion topics for a group to communicate. See Discussions",
+                  'The instructor may have set up discussion topics for a group to communicate. See <a href="#discussions">Discussions</a>',
                   'Alternatively, select the <i class="fa fa-envelope" aria-hidden="true"></i>'
+                ]
+              },
+              {
+                title: 'View Group Enrollment(s)',
+                directionslist: [
+                  'If an instructor is using groups then verify group enrollment by select the number in the \'Members\' column next to the group or group category',
+                  'View other group enrollments from the \'Classlist\' by using the \'View By\' Groups dropdown menu at the top of the student list'
                 ]
               }
             ]
           },
           {
-            title: "Quizzes",
+            title: 'Quizzes',
             location: "Found on the course navigation menu",
-            info: 'The list of quizzes will display start and end dates or an \'Always Available\' message will appear with the quiz title. If',
             howtos: [
+               {
+                title: 'Quiz Availability',
+                directionslist: [
+                 'The list of quizzes will display start and end dates or an \'Always Available\' message will appear with the quiz title',
+                 'The number of allowable attempts will also appear next to the quiz title'
+                ]
+              },{
+                title: 'Quiz Completion Screen',
+                directionslist: [
+                  'After submitting a completed quiz the score may be available on the quiz completion screen',
+                  'This score might be inaccurate if the quiz contained short answer or essay questions which cannot be automatically graded',
+                  'The instructor will grade these and the score will be adjusted.'
+                ]
+              },
               {
-                title: "Take a Quiz",
+                title: 'Take a Quiz',
                 directionslist: [
                   'Select the title of the quiz',
-                  'Review the quiz description, time allowed, attempts allows',
+                  'Review the quiz description, time allowed, attempts allowed',
+                  '<mark>Start Quiz</mark>',
+                  'Select <mark>Save</mark> to save each question or select <mark>Next Page</mark> (if applicable) or <mark>Save All Responses</mark>',
+                  'Select <mark>Go to Submit Quiz</mark> when finished',
+                  '<mark>Submit Quiz</mark>',
+                  'Note: If the internet browser window is accidentally closed or the quiz is interrupted then the quiz can be resumed if still within the instructor-set time allotment'
+                ]
+              },
+              {
+                title: 'View Quiz Availability',
+                directionslist: [
+                  'The list of quizzes will display with start and end dates of availability, if enabled by the instructor',
                   'Alternatively, an \'Always Available\' message will appear with the quiz title'
                 ]
               },
               {
-                title: "View Quiz Availability",
+                title: 'View Quiz Submission Results',
                 directionslist: [
-                  'The list of quizzes will display with start and end dates of availability if enabled by the instructor',
-                  'Alternatively, an \'Always Available\' message will appear with the quiz title'
+                  'Select the dropdown <i class="fa fa-caret-down" aria-hidden="true"></i> next to the title of quiz',
+                  'Select <mark>Submissions</mark>',
+                  'Select the attempt from the \'Individual Attempts\' column',
+                  'Review score(s) and question feedback and answers (if enabled by the instructor)',
+                  'Score and feedback may also have been sent to Grades. See <a href="#grades">Grades</a>.'
                 ]
               }
             ]
           },
           {
             title: 'Support',
-            info: `<p>From the Course Homepage in any course you can select the
-                        <mark>D2L Help</mark> tab at the bottom right of the screen to ask any questions you might have about your
-                        course or about D2L in general.</p>
-    `,
+            info: 'The HelpDesk is the point of contact for computer services, equipment, and software. <a href="http://www.pstcc.edu/itsc/helpdesk/" target="_blank">Contact the HelpDesk<a>',
             howtos: [
               {
-                title: "eLearn Documentation Site at ETS",
-                directionslist: [` <p>A place for 'How Tos' in D2L and Accessibility.
-                        <a target="_blank" href="http://blogs.pstcc.edu/elearn/d2l/">ETS eLearn Documentation Site</a> <i class="fa fa-external-link" aria-hidden="true"></i></p>
-    `]
+                title: 'Student Semester Checklist',
+                directionslist: [
+                  'Review the semester checklist on the Brightspace D2L homepage after logging in',
+                  'Complete the checklist to take the D2L tour, set up notifications, save your grades, etc.'
+                  ]
               },
               {
-                title: "Official Brightspace Documentation",
-                directionslist: [`   <p>Select
-                        <mark>Resources</mark> |
-                        <mark>D2L Documentation</mark> at the top course selection screen when you first login. Or access <a href="https://documentation.brightspace.com" target="_blank">the documentation here</a> <i class="fa fa-external-link" aria-hidden="true"></i></p>`]
+                title: 'Official Brightspace Documentation',
+                directionslist: ['<p>Select <mark>Resources</mark> | <mark>D2L Documentation</mark> at the top of the course selection screen after logging in. Or access <a class="ext" href="https://documentation.brightspace.com/EN/learners/learners.htm" target="_blank">the documentation here</a> <i class="fa fa-external-link" aria-hidden="true"></i>']
               }
             ]
           }

@@ -3,10 +3,20 @@
 <!-- cSpell:ignore docx, directionslist, Brightspace, Pellissippi, body, directionshtml, quickmarks, checkmarks, Turnitin, howto, unenroll, howtos, classlist, crossorigin, gradebook -->
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82226352-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-82226352-1');
+  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <meta http-equiv="refresh" content="20"> -->
-  <title>D2L Reference</title>
+  <title>Student - D2L Reference</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
@@ -19,13 +29,21 @@
       color: inherit;
     }
 
-    a:active,
+    /* a:active,
     a:hover {
-      /* text-decoration: underline; */
+      text-decoration: underline;
+    } */
+
+    .directions ul li a, a.ext {
+      text-decoration: underline;
     }
 
-    .directions ul li a{
-      text-decoration: underline;
+    img {
+      max-height: 300px;
+      max-width: 300px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     li li:hover {
@@ -44,7 +62,6 @@
     @media (max-width: 1000px) {}
 
     @media print {
-      
       h1 {
         font-size: 1.3rem;
       }
@@ -59,6 +76,7 @@
       }
       blockquote {
         border: none;
+        border-left: 5px solid #f0f0f0;
       }
       body {
         font-size: 0.8rem;
@@ -66,16 +84,16 @@
       mark,
       kbd {
         color: inherit;
-        background-color: #f0f0f0;
+        background-color: #eeeded;
         /* text-decoration: underline; */
         font-weight: bold;
       }
       .directions a[href].ext:after {
         content: " (" attr(href) ") ";
       }
-      .directions ul li a{
-      text-decoration: none;
-    }
+      .directions ul li a {
+        text-decoration: none;
+      }
       .fa-external-link {
         display: none;
       }
@@ -83,10 +101,8 @@
         margin: 0;
         padding: 0;
       }
-      /* .main-content {
-                height: 100%;
-            } */
-      ul, .howto {
+      ul,
+      .howto, tool {
         page-break-inside: avoid;
       }
     }
@@ -104,7 +120,7 @@
           </p>
         </h1>
         <!-- <p>{{address}}</p> -->
-        <hr> </div>
+         </div>
       <!--/container-->
     </div>
     <!--/masthead-->
@@ -112,7 +128,7 @@
     <div class="container">
       <div class="row">
         <!--left-->
-        <div class="col-md-3 hidden-print" id="leftCol">
+        <div class="col-md-3 hidden-print" id="leftCol" role="navigation">
           <ul class="nav flex-column" id="nav">
             <li class="nav-item" v-for="tool in sortTitles">
               <a v-bind:href="'#'+addTag(tool.title)">{{tool.title}}</a>
@@ -126,30 +142,32 @@
             </li>
           </ul>
         </div>
-        <!--/left return this.tools.sort(this.sort_by('title', false, function (a) { return a.toUpperCase() }));-->
+        <!--/left-->
         <!--right-->
-        <div class="col-md-9 main-content">
+        <div class="col-md-9 main-content" role="main">
           <div class="tool" v-for="tool in sortTitles">
-            <h2 v-bind:id="addTag(tool.title)">
-              <a title="go to top" href="#">{{tool.title}}</a>
+            <hr>
+            <h2 v-bind:id="addTag(tool.title)" role="heading">
+              <a title="go to top" href="#" aria-label="go to top">{{tool.title}}</a>
             </h2>
             <blockquote v-if="tool.location" v-html="tool.location"></blockquote>
             <p v-if="tool.info">
               <span v-html="tool.info"></span>
             </p>
             <div v-if="tool.howtos" v-for="howto in tool.howtos" class="howto">
-              <a title="go to top" href="#">
-                <h3 v-if="howto.title" v-bind:id="addTag(howto.title)" v-html="howto.title"></h3>
+              <a title="go to top" href="#" aria-label="go to top">
+                <h3 v-if="howto.title" v-bind:id="addTag(howto.title)" v-html="howto.title" role="heading"></h3>
               </a>
               <!-- <div v-if="howto.directionshtml" class="directions" v-html="howto.directionshtml"></div> -->
               <div v-if="howto.directionslist" class="directions">
                 <ul>
                   <li v-for="direction in howto.directionslist" v-html="direction"> </li>
                 </ul>
+                <!-- <img src="./assets/sharedfiles.jpg" alt="screenshot"> </div> -->
               </div>
-            </div>
-            <!--/howto-->
-            <hr> </div>
+              <!--/howto-->
+               </div>
+          </div>
           <!--/tool-->
           <p>{{address}}</p>
         </div>
@@ -164,27 +182,27 @@
 
 
     var app = new Vue({
-      el: "#app",
+      el: '#app',
       data: {
         title: 'Brightspace D2L Quick Reference - Student',
-        year: "2018",
+        year: '2018',
         images: true,
-        address: "http://sms.pstcc.edu/ets/ets/student.d2lref.html", 
+        address: 'http://sms.pstcc.edu/ets/ets/student.d2lref.html',
         subtitle: {
-          text: "Pellissippi State Community College",
-          url: "http://www.pstcc.edu/"
+          text: 'Pellissippi State Community College',
+          url: 'http://www.pstcc.edu/'
         },
         tools: [
           {
             title: 'Announcements',
-            location: "Found on the course homepage",
+            location: 'Found on the course homepage',
             info:
               'Subscribe or read instructor messages, course information, announcements, and updates.',
             howtos: [
               {
                 title: 'Dismiss an Announcement',
                 directionslist: [
-                  'Select the <mark>X</mark> next to an announcement heading to dismiss an announcement from your view only.'
+                  'Select the <mark>X</mark> next to an announcement heading to dismiss an announcement from your view only'
                 ]
               },
               {
@@ -197,12 +215,12 @@
           },
           {
             title: 'Assignments',
-            location: "Found on the course navigation menu",
+            location: 'Found on the course navigation menu',
             howtos: [
               {
                 title: 'Confirm Assignment Submission',
                 directionslist: [
-                  'Every successful assignment submission will result in an automatic course message.',
+                  'Every successful assignment submission will result in an automatic course message',
                   'While in the course, select the mail <i class="fa fa-envelope" aria-hidden="true"></i> icon from the top navigation menu',
                   'Select the mail message with the subject \'Assignment Submission Receipt\''
                 ]
@@ -215,7 +233,7 @@
                   'Select <mark>Add a File | Upload</mark>',
                   'Select the file or multiple files (if enabled by the instructor)',
                   'Select <mark>Add | Submit</mark>',
-                  'Note: depending on the instructor\'s assignment settings, when another file is uploaded it may replace the previous file or it might add the new uploaded file.',
+                  'Note: depending on the instructor\'s assignment settings, when another file is uploaded it may replace the previous file or it might add the new uploaded file',
                   'Supported file types: text documents (doc, docx, pdf, ppt)(not Apple iWork files), images (jpg, png, gif), media (mpeg, mp3, mp4, mov), web documents (htm, html)'
                 ]
               },
@@ -232,7 +250,7 @@
                 directionslist: [
                   'If the instructor is using Turnitin<i class="fa fa-registered" aria-hidden="true"></i> then the feedback may be in \'Feedback Studio\'',
                   'Select <i class="fa fa-comment-o" aria- hidden="true" ></i > <mark>View</mark> in the \'Feedback\' column next to the title of the assignment folder ',
-                  'Select either the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> similarity percentage number or select the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> Grademark<i class="fa fa-registered" aria-hidden="true"></i> <i class="fa fa-check-square-o" aria-hidden="true"></i> icon'
+                  'Select either the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> similarity percentage number or select the Turnitin<i class="fa fa-registered" aria-hidden="true"></i> Grademark<i class="fa fa-registered" aria-hidden="true"></i> icon <i class="fa fa-check-square-o" aria-hidden="true"></i>'
                 ]
               },
               {
@@ -251,15 +269,9 @@
               {
                 title: 'View Class Attendance',
                 directionslist: [
-                 'Select the attendance register from teh \'Register Name\' column',
-                 'Review class sessions and \'Attendance Status\'',
-                 'Note: if the \'Additional Course Tools\' widget cannot be found then please contact the instructor'
-                ]
-              },
-              {
-                title: 'Subscribe to Announcements',
-                directionslist: [
-                  'Receive announcements through texts, phone notifications or by email. See <a href="#pulseapp">Pulse App</a> and <a href="#notifications">Notifications</a>.'
+                  'Select the attendance register from the \'Register Name\' column',
+                  'Review class sessions and \'Attendance Status\'',
+                  'Note: if the \'Additional Course Tools\' widget cannot be found then please contact the instructor'
                 ]
               }
             ]
@@ -288,9 +300,8 @@
           },
           {
             title: 'Class Progress',
-            location: "Found on the course navigation menu",
-            info: `Access reports and details on progress through the course. This includes: 
-            grades, objectives, content, discussions, assignment submission folder, quizzes, checklist, surveys, and login statistics.`,
+            location: 'Found on the course navigation menu',
+            info: 'Access reports and details on progress through the course. This includes: grades, objectives, content, discussions, assignment submission folder, quizzes, checklist, surveys, and login statistics.',
             howtos: [
               {
                 title: 'Save or Print Progress Record',
@@ -306,26 +317,25 @@
           },
           {
             title: 'Classlist',
-            location: "Found on the course navigation menu",
+            location: 'Found on the course navigation menu',
             howtos: [
               {
                 title: 'Send Messages',
                 directionslist: [
-                  `Select the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> next
-                        to the student(s) or instructor to message</li><li>Select <mark>Message</mark>`
+                  'Select the checkbox <i class="fa fa-check-square-o" aria-hidden="true"></i> next to the student(s) or instructor to message</li><li>Select <mark>Message</mark>'
                 ]
               },
               {
                 title: 'View Profiles',
                 directionslist: [
-                  `Select the image or image placeholder next to the student or instructor`
+                  'Select the image or image placeholder next to the student or instructor'
                 ]
               }
             ]
           },
           {
             title: 'Content',
-            location: "Found on the course navigation menu",
+            location: 'Found on the course navigation menu',
             howtos: [
               {
                 title: 'Bookmark Topics',
@@ -338,13 +348,13 @@
               {
                 title: 'Course Overview',
                 directionslist: [
-                  `Select <mark>Overview</mark> from the left navigation menu`
+                  'Select <mark>Overview</mark> from the left navigation menu'
                 ]
               },
               {
                 title: 'Course Schedule',
                 directionslist: [
-                  `Select <mark>Course Schedule</mark> from the left navigation menu`
+                  'Select <mark>Course Schedule</mark> from the left navigation menu'
                 ]
               },
               {
@@ -365,7 +375,7 @@
                 title: 'Print Topic',
                 directionslist: [
                   'Select the topic',
-                  'Select the <mark>Download</mark> button to download that topic'
+                  'Select the <mark>Print</mark> button'
                 ]
               },
               {
@@ -420,15 +430,14 @@
                 title: 'Pulse App',
                 directionslist: [
                   'View course updates, content, dates, announcements, and grades for all courses',
-                  `Download the app for iPhone and Android devices!
-                        <a class= "ext" href="https://www.d2l.com/products/pulse/" target="_blank">Download the Pulse App </a><i class="fa fa-external-link" aria-hidden="true"></i></p>`
+                  'Download the app for iPhone and Android devices! <a class= "ext" href="https://www.d2l.com/products/pulse/" target="_blank">Download the Pulse App </a><i class="fa fa-external-link" aria-hidden="true"></i></p>'
                 ]
               }
             ]
           },
           {
             title: 'Discussions',
-            location: "Found on the course navigation menu",
+            location: 'Found on the course navigation menu',
             info:
               'Instructors can create forums, topics, threads, and replies. Students can create threads and replies if a topic is available.',
             howtos: [
@@ -459,7 +468,7 @@
           },
           {
             title: 'Grades',
-            location: "Found on the course navigation menu",
+            location: 'Found on the course navigation menu',
             howtos: [
               {
                 title: 'Save | Print Grade Results',
@@ -472,8 +481,10 @@
                 title: 'View Final Grade',
                 directionslist: [
                   'Final grades or current running grade will be totaled and visible at the top of the page above the grade items',
-                  'This grade is only visible when the instructor releases it.  If it is not visible then contact the instructor',
-                  'Further grade information is also available in <mark>Class Progress</mark> on the navigation menu. See <a href="#classprogress">Class Progress</a>'
+                  'This grade is only visible when the instructor releases it',
+                  'If it is not visible then contact the instructor',
+                  'Further grade information is also available in <mark>Class Progress</mark> on the navigation menu',
+                  'See <a href="#classprogress">Class Progress</a>'
                 ]
               },
               {
@@ -489,7 +500,6 @@
             title: 'Groups',
             location:
               'Found in the \'Additional Course Tools\' widget on the course homepage',
-            // info: "If an instructor is using groups can be automatically generated, manually managed, or even self-enrolling.",
             howtos: [
               {
                 title: 'Enroll in a Group',
@@ -504,13 +514,13 @@
                 title: 'Message Group Members',
                 directionslist: [
                   'The instructor may have set up discussion topics for a group to communicate. See <a href="#discussions">Discussions</a>',
-                  'Alternatively, select the <i class="fa fa-envelope" aria-hidden="true"></i>'
+                  'Alternatively, select the <i class="fa fa-envelope" aria-hidden="true"></i> mail icon in the \'Messages\' column next to the group name'
                 ]
               },
               {
                 title: 'View Group Enrollment(s)',
                 directionslist: [
-                  'If an instructor is using groups then verify group enrollment by select the number in the \'Members\' column next to the group or group category',
+                  'If an instructor is using groups then verify group enrollment by selecting the number in the \'Members\' column next to the group or group category',
                   'View other group enrollments from the \'Classlist\' by using the \'View By\' Groups dropdown menu at the top of the student list'
                 ]
               }
@@ -518,20 +528,14 @@
           },
           {
             title: 'Quizzes',
-            location: "Found on the course navigation menu",
+            location: 'Found on the course navigation menu',
             howtos: [
                {
-                title: 'Quiz Availability',
-                directionslist: [
-                 'The list of quizzes will display start and end dates or an \'Always Available\' message will appear with the quiz title',
-                 'The number of allowable attempts will also appear next to the quiz title'
-                ]
-              },{
                 title: 'Quiz Completion Screen',
                 directionslist: [
                   'After submitting a completed quiz the score may be available on the quiz completion screen',
                   'This score might be inaccurate if the quiz contained short answer or essay questions which cannot be automatically graded',
-                  'The instructor will grade these and the score will be adjusted.'
+                  'The instructor will grade these and the score will be adjusted'
                 ]
               },
               {
@@ -567,18 +571,19 @@
           },
           {
             title: 'Support',
-            info: 'The HelpDesk is the point of contact for computer services, equipment, and software. <a href="http://www.pstcc.edu/itsc/helpdesk/" target="_blank">Contact the HelpDesk<a>',
+            info: 'The HelpDesk is the point of contact for computer services, equipment, and software. <a class="ext" href="http://www.pstcc.edu/itsc/helpdesk/" target="_blank">Contact the HelpDesk<a> <i class="fa fa-external-link" aria-hidden="true"></i>. <br>Contact the instructor for course and content related questions',
             howtos: [
               {
                 title: 'Student Semester Checklist',
                 directionslist: [
                   'Review the semester checklist on the Brightspace D2L homepage after logging in',
                   'Complete the checklist to take the D2L tour, set up notifications, save your grades, etc.'
-                  ]
+                ]
               },
               {
                 title: 'Official Brightspace Documentation',
-                directionslist: ['<p>Select <mark>Resources</mark> | <mark>D2L Documentation</mark> at the top of the course selection screen after logging in. Or access <a class="ext" href="https://documentation.brightspace.com/EN/learners/learners.htm" target="_blank">the documentation here</a> <i class="fa fa-external-link" aria-hidden="true"></i>']
+                directionslist: [
+                  '<p>Select <mark>Resources</mark> | <mark>D2L Documentation</mark> at the top of the course selection screen after logging in. Or access <a class="ext" href="https://documentation.brightspace.com/EN/learners/learners.htm" target="_blank">the documentation here</a> <i class="fa fa-external-link" aria-hidden="true"></i>']
               }
             ]
           }

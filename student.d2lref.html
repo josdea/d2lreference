@@ -12,29 +12,53 @@
 
     gtag('config', 'UA-82226352-1');
   </script>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <meta http-equiv="refresh" content="20"> -->
   <title>Student - D2L Reference</title>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+    integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <style>
+    ol {
+      list-style-type: none;
+      counter-reset: item;
+      margin: 0;
+      padding: 0;
+    }
+
+    ol>li {
+      display: table;
+      counter-increment: item;
+      margin-bottom: 0.6em;
+    }
+
+    ol>li:before {
+      content: counters(item, ".") ". ";
+      display: table-cell;
+      padding-right: 0.6em;
+    }
+
+    li ol>li {
+      margin: 0;
+      font-size: 12.8px;
+    }
+
+    li ol>li:before {
+      content: counters(item, ".") " ";
+    }
+
     a:link,
     a:visited {
       text-decoration: none;
       color: inherit;
     }
 
-    /* a:active,
-    a:hover {
-      text-decoration: underline;
-    } */
-
-    .directions ul li a, a.ext {
+    .directions ul li a,
+    a.ext {
       text-decoration: underline;
     }
 
@@ -79,17 +103,24 @@
         border-left: 5px solid #f0f0f0;
       }
       body {
-        font-size: 0.8rem;
+        font-size: 0.84rem;
       }
       mark,
       kbd {
         color: inherit;
         background-color: #eeeded;
-        /* text-decoration: underline; */
         font-weight: bold;
       }
-      .directions a[href].ext:after {
+      .nav-item {
+        margin-bottom: 0px;
+      }
+      a:after {
         content: " (" attr(href) ") ";
+      }
+      h2 a:after,
+      h3 a:after,
+      li.nav-item a:after {
+        content: unset;
       }
       .directions ul li a {
         text-decoration: none;
@@ -102,10 +133,12 @@
         padding: 0;
       }
       ul,
-      .howto, tool {
+      .howto,
+      tool {
         page-break-inside: avoid;
       }
     }
+
   </style>
 </head>
 
@@ -120,7 +153,7 @@
           </p>
         </h1>
         <!-- <p>{{address}}</p> -->
-         </div>
+      </div>
       <!--/container-->
     </div>
     <!--/masthead-->
@@ -128,36 +161,42 @@
     <div class="container">
       <div class="row">
         <!--left-->
-        <div class="col-md-3 hidden-print" id="leftCol" role="navigation">
-          <ul class="nav flex-column" id="nav">
-            <li class="nav-item" v-for="tool in sortTitles">
+        <div class="col-md-3 " id="leftCol" role="navigation">
+          <ol class="nav flex-column" id="nav">
+            <li class="nav-item" v-for="(tool, toolindex) in sortTitles">
               <a v-bind:href="'#'+addTag(tool.title)">{{tool.title}}</a>
-              <ul class="hidden-md-down hidden-print">
-                <small>
-                  <li v-if="tool.howtos" v-for="howto in tool.howtos">
-                    <a v-bind:href="'#'+addTag(howto.title)" v-html="howto.title"></a>
-                  </li>
-                </small>
-              </ul>
+              <ol class="hidden-md-down">
+                <!-- <small> -->
+                <li v-if="tool.howtos" v-for="(howto, howtoindex) in tool.howtos">
+                  <a v-bind:href="'#'+addTag(howto.title)" v-html="howto.title"></a>
+                </li>
+                <!-- </small> -->
+              </ol>
             </li>
-          </ul>
+          </ol>
         </div>
         <!--/left-->
         <!--right-->
         <div class="col-md-9 main-content" role="main">
-          <div class="tool" v-for="tool in sortTitles">
+          <div class="tool" v-for="(tool, toolindex) in sortTitles">
             <hr>
             <h2 v-bind:id="addTag(tool.title)" role="heading">
+              <small>{{(toolindex+1) +'. '}}</small>
               <a title="go to top" href="#" aria-label="go to top">{{tool.title}}</a>
             </h2>
             <blockquote v-if="tool.location" v-html="tool.location"></blockquote>
             <p v-if="tool.info">
               <span v-html="tool.info"></span>
             </p>
-            <div v-if="tool.howtos" v-for="howto in tool.howtos" class="howto">
-              <a title="go to top" href="#" aria-label="go to top">
+            <div v-if="tool.howtos" v-for="(howto, howtoindex) in tool.howtos" class="howto">
+              <!-- <a title="go to top" href="#" aria-label="go to top">
                 <h3 v-if="howto.title" v-bind:id="addTag(howto.title)" v-html="howto.title" role="heading"></h3>
-              </a>
+              </a> -->
+              <h3 v-if="howto.title" v-bind:id="addTag(howto.title)" role="heading">
+                <small>{{(toolindex+1) +'.'+ (howtoindex+1) +' '}}</small>
+                <a title="go to top" href="#" aria-label="go to top"
+                  v-html="howto.title"></a>
+              </h3>
               <!-- <div v-if="howto.directionshtml" class="directions" v-html="howto.directionshtml"></div> -->
               <div v-if="howto.directionslist" class="directions">
                 <ul>
@@ -166,7 +205,7 @@
                 <!-- <img src="./assets/sharedfiles.jpg" alt="screenshot"> </div> -->
               </div>
               <!--/howto-->
-               </div>
+            </div>
           </div>
           <!--/tool-->
           <p>{{address}}</p>
@@ -446,7 +485,7 @@
                 directionslist: [
                   'Access the forum topic or thread',
                   'Select the <mark>Start a New Thread</mark> button or the <mark>Reply to Thread</mark> button',
-                  'Enter a subject and desired content: text, images, media, video, tables, attachments, etc.',
+                  'Enter a subject and desired content: text, images, media, video, tables, attachments, etc',
                   'Note: some instructors require that a thread be created before thread replies are enabled in a topic'
                 ]
               },
@@ -530,7 +569,7 @@
             title: 'Quizzes',
             location: 'Found on the course navigation menu',
             howtos: [
-               {
+              {
                 title: 'Quiz Completion Screen',
                 directionslist: [
                   'After submitting a completed quiz the score may be available on the quiz completion screen',
@@ -571,13 +610,13 @@
           },
           {
             title: 'Support',
-            info: 'The HelpDesk is the point of contact for computer services, equipment, and software. <a class="ext" href="http://www.pstcc.edu/itsc/helpdesk/" target="_blank">Contact the HelpDesk<a> <i class="fa fa-external-link" aria-hidden="true"></i>. <br>Contact the instructor for course and content related questions',
+            info: 'The HelpDesk is the point of contact for computer services, equipment, and software. <a class="ext" href="http://www.pstcc.edu/itsc/helpdesk/" target="_blank">Contact the HelpDesk</a> <i class="fa fa-external-link" aria-hidden="true"></i>. <br>Contact the instructor for course and content related questions',
             howtos: [
               {
                 title: 'Student Semester Checklist',
                 directionslist: [
                   'Review the semester checklist on the Brightspace D2L homepage after logging in',
-                  'Complete the checklist to take the D2L tour, set up notifications, save your grades, etc.'
+                  'Complete the checklist to take the D2L tour, set up notifications, save your grades, etc'
                 ]
               },
               {

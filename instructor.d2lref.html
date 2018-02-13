@@ -22,94 +22,123 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
     integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <style>
-    a:link,
-    a:visited {
-      text-decoration: none;
-      color: inherit;
-    }
+<style>
+  ol {
+    list-style-type: none;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* a:active,
-    a:hover {
-      text-decoration: underline;
-    } */
+  ol>li {
+    display: table;
+    counter-increment: item;
+    margin-bottom: 0.6em;
+  }
 
-    .directions ul li a,
-    a.ext, #masthead div p a:hover {
-      text-decoration: underline;
-    }
-#looking{
-  margin-bottom: .4em;
-}
-    img {
-      max-height: 300px;
-      max-width: 300px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  ol>li:before {
+    content: counters(item, ".") ". ";
+    display: table-cell;
+    padding-right: 0.6em;
+  }
 
-    li li:hover {
-      border-right: 2px solid black;
-    }
+  li ol>li {
+    margin: 0;
+    font-size: 12.8px;
+  }
 
+  li ol>li:before {
+    content: counters(item, ".") " ";
+  }
+
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .directions ul li a,
+  a.ext {
+    text-decoration: underline;
+  }
+
+  img {
+    max-height: 300px;
+    max-width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  li li:hover {
+    border-right: 2px solid black;
+  }
+
+  blockquote {
+    border-left: 5px solid #f0f0f0;
+    padding-left: 1.5rem;
+  }
+
+  @media screen and (min-width: 768px) {}
+
+  @media (min-width: 979px) {}
+
+  @media (max-width: 1000px) {}
+
+  @media print {
+    h1 {
+      font-size: 1.3rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+    h4 {
+      font-size: 0.9rem;
+    }
     blockquote {
+      border: none;
       border-left: 5px solid #f0f0f0;
-      padding-left: 1.5rem;
     }
-
-    @media screen and (min-width: 768px) {}
-
-    @media (min-width: 979px) {}
-
-    @media (max-width: 1000px) {}
-
-    @media print {
-      h1 {
-        font-size: 1.3rem;
-      }
-      h2 {
-        font-size: 1.2rem;
-      }
-      h3 {
-        font-size: 1rem;
-      }
-      h4 {
-        font-size: 0.9rem;
-      }
-      blockquote {
-        border: none;
-        border-left: 5px solid #f0f0f0;
-      }
-      body {
-        font-size: 0.8rem;
-      }
-      mark,
-      kbd {
-        color: inherit;
-        background-color: #eeeded;
-        /* text-decoration: underline; */
-        font-weight: bold;
-      }
-      .directions a[href].ext:after, .looking a[href].ext:after {
-        content: " (" attr(href) ") ";
-      }
-      .directions ul li a {
-        text-decoration: none;
-      }
-      .fa-external-link {
-        display: none;
-      }
-      ::first-letter {
-        margin: 0;
-        padding: 0;
-      }
-      /* ul, .howto, tool {
-        page-break-inside: avoid;
-      } */
+    body {
+      font-size: 0.84rem;
     }
-
-  </style>
+    mark,
+    kbd {
+      color: inherit;
+      background-color: #eeeded;
+      font-weight: bold;
+    }
+    .nav-item {
+      margin-bottom: 0px;
+    }
+    a:after {
+      content: " (" attr(href) ") ";
+    }
+    h2 a:after,
+    h3 a:after,
+    li.nav-item a:after {
+      content: unset;
+    }
+    .directions ul li a {
+      text-decoration: none;
+    }
+    .fa-external-link {
+      display: none;
+    }
+    ::first-letter {
+      margin: 0;
+      padding: 0;
+    }
+    ul,
+    .howto,
+    tool {
+      page-break-inside: avoid;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -121,7 +150,6 @@
           <p class="lead">
             <a v-bind:href="subtitle.url">{{subtitle.text}}</a>
           </p>
-            
         </h1>
         <p id="looking">Looking for the
           <a target="_blank" v-bind:href="subtitle.studenturl" v-html="subtitle.studenttext"></a>
@@ -135,36 +163,37 @@
     <div class="container">
       <div class="row">
         <!--left-->
-        <div class="col-md-3 hidden-print" id="leftCol" role="navigation">
-          <ul class="nav flex-column" id="nav">
-            <li class="nav-item" v-for="tool in sortTitles">
+        <div class="col-md-3" id="leftCol" role="navigation">
+          <ol class="nav flex-column" id="nav">
+            <li class="nav-item" v-for="(tool, toolindex) in sortTitles">
               <a v-bind:href="'#'+addTag(tool.title)">{{tool.title}}</a>
-              <ul class="hidden-md-down hidden-print">
-                <small>
-                  <li v-if="tool.howtos" v-for="howto in tool.howtos">
+              <ol class="">
+                  <li v-if="tool.howtos" v-for="(howto, howtoindex) in tool.howtos">
                     <a v-bind:href="'#'+addTag(howto.title)" v-html="howto.title"></a>
                   </li>
-                </small>
-              </ul>
+              </ol>
             </li>
-          </ul>
+          </ol>
         </div>
         <!--/left-->
         <!--right-->
         <div class="col-md-9 main-content" role="main">
-          <div class="tool" v-for="tool in sortTitles">
+          <div class="tool" v-for="(tool, toolindex) in sortTitles">
             <hr>
             <h2 v-bind:id="addTag(tool.title)" role="heading">
-              <a title="go to top" href="#" aria-label="go to top">{{tool.title}}</a>
+              <small>{{(toolindex+1) +'. '}}</small><a title="go to top" href="#" aria-label="go to top">{{tool.title}}</a>
             </h2>
             <blockquote v-if="tool.location" v-html="tool.location"></blockquote>
             <p v-if="tool.info">
               <span v-html="tool.info"></span>
             </p>
-            <div v-if="tool.howtos" v-for="howto in tool.howtos" class="howto">
-              <a title="go to top" href="#" aria-label="go to top">
+            <div v-if="tool.howtos" v-for="(howto, howtoindex) in tool.howtos" class="howto">
+              <!-- <a title="go to top" href="#" aria-label="go to top">
                 <h3 v-if="howto.title" v-bind:id="addTag(howto.title)" v-html="howto.title" role="heading"></h3>
-              </a>
+              </a> -->
+              <h3 v-if="howto.title" v-bind:id="addTag(howto.title)" role="heading">
+                <small>{{(toolindex+1) +'.'+ (howtoindex+1) +' '}}</small><a title="go to top" href="#" aria-label="go to top" v-html="howto.title"></a>
+              </h3>
               <!-- <div v-if="howto.directionslist" class="directions" v-html="howto.directionslist"></div> -->
               <div v-if="howto.directionslist" class="directions">
                 <ul>
@@ -264,9 +293,9 @@
                 directionslist: [
                   'Select the name of the Assignment folder',
                   'Select <mark>Users without feedback</mark> <i class="fa fa-caret-down" aria-hidden="true"></i> option in the pulldown menu',
-                  'Select the percentage information next to the document title to open document in feedback studio.',
-                  'Add comments, recordings, quickmarks, and rubrics. ',
-                  'Try this demo of <a target="_blank" href="http://turnitin.com/assets/en_us/media/feedback-studio-demo/">Feedback Studio.</a> <i class="fa fa-external-link" aria-hidden="true"></i>'
+                  'Select the percentage information next to the document title to open document in feedback studio',
+                  'Add comments, recordings, quickmarks, and rubrics ',
+                  'Try this demo of <a target="_blank" href="http://turnitin.com/assets/en_us/media/feedback-studio-demo/">Feedback Studio</a> <i class="fa fa-external-link" aria-hidden="true"></i>'
                 ]
               }
             ]
@@ -453,7 +482,7 @@
                   'Select the ellipsis <i class="fa fa-ellipsis-h" aria-hidden="true"></i> in the corner of the image',
                   'Select \'Change Image\'',
                   'Choose from existing image choices (if available) or upload your own'
-                  ]
+                ]
               },
               {
                 title: "Messaging",
@@ -468,7 +497,7 @@
               {
                 title: "Notifications",
                 directionslist: [
-                  'Find notification settings by selecting your name in the top - right corner of the page.Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.',
+                  'Find notification settings by selecting your name in the top - right corner of the page. Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.',
                   'See also, the Pulse App'
                 ]
               },
@@ -483,14 +512,14 @@
                 title: "Profile",
                 directionslist: [
                   'Find profile settings by selecting your name in the top - right corner of the page',
-                  'Add a profile image and encourage your students to do the same.Add further contact information, interests, and social networking connections'
+                  'Add a profile image and encourage your students to do the same. Add further contact information, interests, and social networking connections'
                 ]
               },
               {
                 title: "Pulse App",
                 directionslist: [
-                  'Students can see course updates, Content, dates, announcements, and grades for all their courses.Direct students to download the app for iPhone and Android devices!',
-                  '< a href = "https://www.d2l.com/products/pulse/" target = "_blank" > Download the Pulse App </a > <i class="fa fa-external-link" aria-hidden="true"></i>'
+                  'Students can see course updates, Content, dates, announcements, and grades for all their courses. Direct students to download the app for iPhone and Android devices!',
+                  '<a href = "https://www.d2l.com/products/pulse/" target = "_blank" > Download the Pulse App </a> <i class="fa fa-external-link" aria-hidden="true"></i>'
                 ]
               }
             ]
@@ -635,7 +664,7 @@
           {
             title: "Groups",
             location: "Found in <mark>Course Admin</mark> on the course navigation menu and then <mark>Groups</mark>",
-            info: "Groups can be automatically generated, manually managed, or even self-enrolling.",
+            info: "Groups can be automatically generated, manually managed, or even self-enrolling",
             howtos: [
               {
                 title: "Create Groups",
@@ -732,10 +761,7 @@
           },
           {
             title: "Support",
-            info: `From the Course Homepage in any course you can select the
-                    <mark>D2L Help</mark> tab at the bottom right of the screen to ask any questions you might have about your
-                    course or about D2L in general.
-              `,
+            info: 'From the Course Homepage in any course you can select the <mark>D2L Help</mark> tab at the bottom right of the screen to ask any questions you might have about your course or about D2L in general.',
             howtos: [
               {
                 title: "eLearn Documentation Site at ETS",

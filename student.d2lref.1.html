@@ -28,7 +28,7 @@
 <body>
   <div id="app">
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <span class="navbar-brand col-sm-6 col-md-6 mr-0 anchor" href="##">{{title}}</span>
+      <span class="navbar-brand col-sm-6 col-md-6 mr-0" class="anchor" href="##">{{title}}</span>
     </nav>
     <div class="container-fluid">
       <div class="row">
@@ -223,7 +223,7 @@
             howtos: [
               {
                 title: 'Create a Task',
-                video: 'https://www.youtube.com/embed/Y6p2rGGSMJE',
+                video: 'https://www.youtube.com/embed/Ne4PYpGrCw0',
                 directionslist: [
                   'Select <mark>Add a task...</mark>',
                   'Type the task'
@@ -596,7 +596,7 @@
       $('#myModal').on('shown.bs.modal', function (e) {
 
         // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-        $("#video").attr('src', $videoSrc + "?rel=0&showinfo=0&modestbranding=1&autoplay=1&vq=hd1080");
+        $("#video").attr('src', $videoSrc + "?rel=0&showinfo=0&modestbranding=1&autoplay=1&vq=hd1080&loop=1&playlist=NZuj52Jqkn0");
       })
 
       // stop playing the youtube video when I close the modal

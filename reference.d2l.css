@@ -1,0 +1,238 @@
+@page {
+    margin: .25in!important;
+    size: letter portrait;
+}
+
+ol {
+    list-style-type: none;
+    /* counter-reset: item; */
+    /* margin: 0; */
+    /* padding: 0; */
+}
+
+ol>li {
+    /* display: table; */
+    /* counter-increment: item; */
+    /* margin-bottom: 0.6em; */
+}
+
+ol>li:before {
+    /* content: counters(item, ".") ". "; */
+    /* display: table-cell;
+      padding-right: 0.6em; */
+}
+
+li ol>li {
+    /* margin: 0; */
+    font-size: .8em;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul.directions li a,
+a.ext {
+    text-decoration: underline;
+}
+
+li li:hover {
+    border-right: 2px solid black;
+    margin-left: 2px;
+}
+
+#app>div>div>nav>div>ul>li>a:hover {
+    border-right: 2px solid black;
+    margin-left: 2px;
+}
+
+blockquote {
+    border-left: 5px solid #f0f0f0;
+    padding-left: 1.5rem;
+}
+
+@media print {
+    .container {
+        margin: 0px!important;
+        padding: 0px!important;
+    }
+    ul.directions li a,
+    a.ext {
+        text-decoration: none;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+    h4 {
+        font-size: 1.1em;
+    }
+    blockquote {
+        border: none;
+        border-left: 5px solid #f0f0f0;
+    }
+    body {
+        font-size: 0.9em;
+    }
+    mark,
+    kbd {
+        color: inherit;
+        background-color: #eeeded;
+        font-weight: bold;
+    }
+    .nav-item {
+        margin-bottom: 0px;
+    }
+    a:after {
+        content: " (" attr(href) ") ";
+    }
+    a.anchor:after {
+        content: unset;
+    }
+    ul,
+    .howto,
+    tool {
+        page-break-inside: avoid;
+    }
+    .fa-external-link-alt {
+        display: none;
+    }
+}
+
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    /* Behind the navbar */
+    padding: 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 48px;
+    /* Height of navbar */
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+    /* font-weight: 500; */
+    color: #333;
+}
+
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #999;
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    font-size: 1rem;
+    /* background-color: rgba(0, 0, 0, .25); */
+    /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25); */
+}
+
+.navbar .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+}
+
+.form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+
+/*
+ * Utilities
+ */
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+#app>div.container-fluid>div>nav>div>ul>li>ol>li>a {
+    padding: 0em;
+    /* padding-left: .1em;; */
+    /* padding: 0px, 0px, 3em, 0px; */
+}
+
+:target:before {
+    content: "";
+    display: block;
+    height: 65px;
+    /* fixed header height*/
+    margin: -65px 0 0;
+    /* negative fixed header height */
+}
+
+.modal-dialog {
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.modal-body {
+    position: relative;
+    padding: 0px;
+}
+
+.close {
+    position: absolute;
+    right: -30px;
+    top: 0;
+    z-index: 999;
+    font-size: 2rem;
+    font-weight: normal;
+    color: #fff;
+    opacity: 1;
+}

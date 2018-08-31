@@ -31,13 +31,13 @@ blockquote {
     text-decoration: none;
   }
   h1 {
-    font-size: 1.7em;
+    font-size: 1.8em;
   }
   h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
   h3 {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   h4 {
     font-size: 1.1em;
@@ -47,7 +47,7 @@ blockquote {
     border-left: 5px solid #f0f0f0;
   }
   body {
-    font-size: 0.9em;
+    font-size: .9em;
   }
   mark,
   kbd {
@@ -63,6 +63,12 @@ blockquote {
   }
   .fa-external-link-alt {
     display: none;
+  }
+  .toc {
+    font-size: 1.3em;
+    line-height: 2em;
+    column-count: 2;
+    page-break-after: always;
   }
 }
 

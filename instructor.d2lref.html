@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Instructor - D2L Brightspace Reference</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="d2lref.css?id=1">
+  <link rel="stylesheet" href="d2lref.css?id=2">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
   <style>
@@ -64,8 +64,6 @@
                 v-html="howto.title"></a>
             </div>
           </li>
-          <!-- <li>Looking for the
-          <a target="_blank" :href="subtitle.studenturl" v-html="subtitle.studenttext"></a></li> -->
         </ul>
       </div>
     </nav>
@@ -80,18 +78,12 @@
         <a target="_blank" :href="subtitle.studenturl" v-html="subtitle.studenttext"></a>
       </p>
       <div class="form-group d-print-none">
-        <!-- <label class="col-md-4 control-label" for="checkboxes">Images</label> -->
         <div class="col-md-4">
           <label class="checkbox-inline" for="checkboxes-0">
             <input type="checkbox" name="checkboxes" id="checkboxes-0" v-model="images"> Show Images </label>
-          <!-- <label class="checkbox-inline" for="checkboxes-1">
-      <input type="checkbox" name="checkboxes" id="checkboxes-1" v-model="imagesprint"> Print Images</label> -->
+          <!-- <input type="checkbox" name="checkboxes" id="checkboxes-1" v-model="imagesprint"> Print Images</label> -->
         </div>
       </div>
-      <!-- <label><input type="checkbox" class="form-check-input" id="showimages" v-model="images">Show Images</label>
-<label>
-  <input type="checkbox" class="form-check-input" id="printimages" v-model="imagesprint">Print Images</label>
-      <hr class="d-none d-print-block"> -->
       <hr>
       <div id="toc" class="toc d-none d-print-block">
         <ol>
@@ -103,8 +95,7 @@
               </li>
             </ul>
           </li>
-          <!-- <li>Looking for the
-                <a target="_blank" :href="subtitle.studenturl" v-html="subtitle.studenttext"></a></li> -->
+
         </ol>
       </div>
       <main class="main-content" role="main">
@@ -112,6 +103,8 @@
           <h2 :id="addTag(tool.title)" role="heading">
             <small class="numbering">{{(toolindex+1) +'. '}}</small>
             <a title="go to top" href="#" aria-label="go to top">{{tool.title}}</a>
+            <span class="copyurl d-print-none btn btn-link" title="copy link to this location" v-on:click="copylink(tool.title)"><i
+                class="fas fa-link "></i></span>
           </h2>
           <blockquote v-if="tool.location" v-html="tool.location"></blockquote>
           <p v-if="tool.info">
@@ -120,8 +113,8 @@
           <section v-if="tool.howtos" v-for="(howto, howtoindex) in tool.howtos" class="howto">
             <h3 v-if="howto.title" :id="addTag(howto.title)" role="heading">
               <small class="numbering">{{(toolindex+1) +'.'+ (howtoindex+1) +' '}}</small>
-              <a title="go to top" href="#" aria-label="go to top"
-                v-html="howto.title"></a>
+              <a title="go to top" href="#" aria-label="go to top" v-html="howto.title"></a> <span class="copyurl d-print-none btn btn-link"
+                title="copy link to this location" v-on:click="copylink(howto.title)"><i class="fas fa-link "></i></span>
             </h3>
             <div :class="{row: images, 'align-items-center': images}">
               <div v-if="(howtoindex%2!=0 && howto.image)" class="col-7">
@@ -137,8 +130,10 @@
                   alt="screenshot of the proceeding directions list"> </div>
             </div>
           </section>
-          <hr> </article>
+          <hr>
+        </article>
         <!--/tool-->
+        <input class="d-print-none" type="hidden" id="urlcopy" v-model="urlCopy">
         <p class="text-center">Access this document at: {{address}}</p>
       </main>
     </div>
@@ -152,10 +147,11 @@
       el: '#app',
       data: {
         title: 'D2L Brightspace Quick Reference - Instructor',
-        year: '2018',
+        year: 'Nov 2018',
         images: true,
         imagesprint: false,
         address: 'https://goo.gl/Qy8dfB',
+        urlCopy: '',
         subtitle: {
           text: 'Pellissippi State Community College',
           url: 'http://www.pstcc.edu/',
@@ -213,14 +209,14 @@
                 title: "Create Assignment Submission Folder",
                 image: "assignmentcreate",
                 directionslist: [
-                  'Select <mark>New Submission Folder</mark>',
+                  'Select <mark>New Assignment</mark>',
                   '<strong>Properties Tab</strong>',
                   'Enter the <mark>Name</mark>',
-                  'Select or create a <mark>Category</mark>',
-                  'Select or create a <mark>Grade Item</mark> to link to',
-                  'Enter grade value in the <mark>Out Of</mark> input ',
                   'Enter the Assignment <mark>Instructions</mark>',
-                  'Edit the <mark>Submission Options</mark> <i class="fas fa-caret-down"></i> to select either \'text\' or \'file\' assignment type',
+                  'Edit the <mark>Submission type</mark> <i class="fas fa-caret-down"></i> to select either \'file\', \'text\', \'on paper\', or \'observed\' assignment type',
+                  'Select or create a <mark>Category</mark>',                  
+                  'Enter grade value in the <mark>Score Out Of</mark> input ',
+                  'Select or create a <mark>Grade Item</mark> to link to',
                   '<strong>Restrictions Tab</strong>',
                   'Deselect the <mark>Hidden from users</mark> <i class="far fa-check-square"></i> option to make the assignment available',
                   'Enter the <mark>Due Date, Start / End date</mark>',
@@ -389,7 +385,7 @@
                   'Select the accessibility checker icon <i class="far fa-eye"></i> <i class="fas fa-check"></i> and fix issues',
                   '<mark>Publish</mark>',
                 ]
-              }, 
+              },
               {
                 title: "Delete Modules or Topics",
                 image: "contentdeletemodules",
@@ -810,6 +806,29 @@
           let temp = x.replace(re, '');
           return temp.toLowerCase();
         },
+        copylink: function (toolid) {
+          let newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search;
+          let tagid = this.addTag(toolid);
+          this.urlCopy = newURL + "#" + tagid;
+
+          let testingCodeToCopy = document.getElementById("urlcopy");
+          testingCodeToCopy.setAttribute('type', 'text')
+          testingCodeToCopy.value = this.urlCopy;
+          testingCodeToCopy.select()
+
+          try {
+            let successful = document.execCommand('copy');
+            let msg = successful ? 'successfully' : 'unsuccessfully';
+            alert('URL to this location was copied ' + msg);
+          } catch (err) {
+            alert('Oops, unable to copy');
+          }
+
+          /* unselect the range */
+          testingCodeToCopy.setAttribute('type', 'hidden')
+          window.getSelection().removeAllRanges()
+
+        },
         sort_by: function (field, reverse, primer) {
           var key = primer ?
             function (x) { return primer(x[field]) } :
@@ -834,6 +853,7 @@
     });
 
 
-  </script> </body>
+  </script>
+</body>
 
 </html>

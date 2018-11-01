@@ -24,12 +24,12 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="d2lref.css?id=2">
+  <link rel="stylesheet" href="d2lref.css?id=3">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
   <style>
     .img-fluid {
-      /* max-width: 93%; */
+      max-width: 96%;
     }
 
     ul {
@@ -111,21 +111,22 @@
             <span v-html="tool.info"></span>
           </p>
           <section v-if="tool.howtos" v-for="(howto, howtoindex) in tool.howtos" class="howto">
-            <h3 v-if="howto.title" :id="addTag(howto.title)" role="heading">
-              <small class="numbering">{{(toolindex+1) +'.'+ (howtoindex+1) +' '}}</small>
-              <a title="go to top" href="#" aria-label="go to top" v-html="howto.title"></a> <span class="copyurl d-print-none btn btn-link"
-                title="copy link to this location" v-on:click="copylink(howto.title)"><i class="fas fa-link "></i></span>
-            </h3>
+        <br>
             <div :class="{row: images, 'align-items-center': images}">
-              <div v-if="(howtoindex%2!=0 && howto.image)" class="col-7">
+              <!-- <div v-if="(howtoindex%2!=0 && howto.image)" class="col-7">
                 <img v-if="(images && howto.image)" :src="'./assets/'+howto.image+'.png'" class="img-fluid img-thumbnail rounded mx-auto d-block border border-dark"
-                  alt="screenshot of the directions list that follows"> </div>
+                  alt="screenshot of the directions list that follows"> </div> -->
               <div class="col">
+                  <h3 v-if="howto.title" :id="addTag(howto.title)" role="heading">
+                      <small class="numbering">{{(toolindex+1) +'.'+ (howtoindex+1) +' '}}</small>
+                      <a title="go to top" href="#" aria-label="go to top" v-html="howto.title"></a> <span class="copyurl d-print-none btn btn-link"
+                        title="copy link to this location" v-on:click="copylink(howto.title)"><i class="fas fa-link "></i></span>
+                    </h3>
                 <ul class="directionslist" v-if="howto.directionslist">
                   <li v-for="direction in howto.directionslist" v-html="direction"></li>
                 </ul>
               </div>
-              <div v-if="(howtoindex%2==0 && howto.image)" class="col-7">
+              <div v-if="( howto.image)" class="col-7">
                 <img v-if="(images && howto.image)" :src="'./assets/'+howto.image+'.png'" class="img-fluid img-thumbnail rounded mx-auto d-block border border-dark"
                   alt="screenshot of the proceeding directions list"> </div>
             </div>
@@ -175,10 +176,10 @@
                 ]
               },
               {
-                title: "Delete Announcement",
+                title: "Delete or Edit Announcement",
                 image: "announcementdelete",
                 directionslist: ['Activate the context menu <i class="fas fa-caret-down"></i> for the announcement title',
-                  'Select <mark>Delete</mark>',
+                  'Select <mark>Delete</mark> or <mark>Edit</mark>',
                   '<em>Note</em>: Selecting the <mark>X</mark> in the upper right corner of an announcement pane only dismisses items from your view. Your students can still see these items until they are deleted or expired past your date settings'
                 ]
               },
@@ -189,16 +190,16 @@
               //     'Select the <mark>X</mark> next to an announcement heading to dismiss an announcement from your view only'
               //   ]
               // },
-              {
-                title: "Edit Announcement",
-                image: "announcementedit",
-                directionslist: [
-                  'Activate the context menu <i class="fas fa-caret-down"></i> for the announcement title',
-                  'Select <mark>Edit</mark>',
-                  'Select the <mark>Major Edit</mark> <i class="far fa-check-square"></i> option to restore the announcement for users who had previously dismissed it',
-                  '<mark>Update</mark>'
-                ]
-              }
+              // {
+              //   title: "Edit Announcement",
+              //   image: "announcementedit",
+              //   directionslist: [
+              //     'Activate the context menu <i class="fas fa-caret-down"></i> for the announcement title',
+              //     'Select <mark>Edit</mark>',
+              //     'Select the <mark>Major Edit</mark> <i class="far fa-check-square"></i> option to restore the announcement for users who had previously dismissed it',
+              //     '<mark>Update</mark>'
+              //   ]
+              // }
             ]
           },
           {
@@ -211,9 +212,8 @@
                 directionslist: [
                   'Select <mark>New Assignment</mark>',
                   '<strong>Properties Tab</strong>',
-                  'Enter the <mark>Name</mark>',
-                  'Enter the Assignment <mark>Instructions</mark>',
-                  'Edit the <mark>Submission type</mark> <i class="fas fa-caret-down"></i> to select either \'file\', \'text\', \'on paper\', or \'observed\' assignment type',
+                  'Enter the <mark>Name</mark> and the Assignment <mark>Instructions</mark>',
+                  'Select <mark>Submission type</mark> <i class="fas fa-caret-down"></i>: file, text, on paper, or observed',
                   'Select or create a <mark>Category</mark>',                  
                   'Enter grade value in the <mark>Score Out Of</mark> input ',
                   'Select or create a <mark>Grade Item</mark> to link to',
@@ -293,12 +293,12 @@
             location: "Found on the course navigation menu",
             howtos: [
               {
-                title: "Enroll Student or Instructor",
+                title: "Enroll User",
                 image: "classlistenroll",
                 directionslist: [
                   'Select <mark>Add Participant</mark> | <mark>Add Existing User</mark>',
                   'Search for their username',
-                  'Select a role that they will have in their course (<mark>Instructor</mark> or <mark>Student</mark>)',
+                  'Select a role that they will have in the course (ex. <mark>Course Observer</mark> or <mark>Guest</mark>)',
                   'Select the checkbox <i class="far fa-check-square"></i> next to their name and <mark>Enroll Selected Users</mark>',
                   // '<em>Careful:</em> be sure you don&#39;t accidentally enroll a student as an instructor as they would be able to change anything you can change in your course'
                 ]
@@ -392,7 +392,7 @@
                 directionslist: [
                   'Select the module from the Table of Contents',
                   'Activate the context menu <i class="fas fa-caret-down"></i> next to the module title',
-                  'Select the <mark>Delete Module</mark>',
+                  'Select <mark>Delete Module</mark>',
                 ]
               },
               {
@@ -453,16 +453,16 @@
                   'Select <mark>Finish</mark> and wait for the green check marks to appear'
                 ]
               },
-              {
-                title: 'Course Image and Banner',
-                image: "courseadminbanner",
-                directionslist: [
-                  'Hover over existing image',
-                  'Select the ellipsis <i class="fas fa-ellipsis-h"></i> in the corner of the image',
-                  'Select \'Change Image\'',
-                  'Choose from existing image choices (if available) or upload your own'
-                ]
-              },
+              // {
+              //   title: 'Course Image and Banner',
+              //   image: "courseadminbanner",
+              //   directionslist: [
+              //     'Hover over existing image',
+              //     'Select the ellipsis <i class="fas fa-ellipsis-h"></i> in the corner of the image',
+              //     'Select \'Change Image\'',
+              //     'Choose from existing image choices (if available) or upload your own'
+              //   ]
+              // },
               {
                 title: "Messaging",
                 image: "courseadminmessaging",
@@ -473,22 +473,23 @@
                 ]
               },
               {
-                title: "Notifications",
-                image: "courseadminnotifications",
+                title: "Notifications and Pulse App",
+                image: "courseadminpulse",
                 directionslist: [
                   'Find notification settings by selecting your name in the top-right corner of the page. Encourage your students to enroll in notifications to receive course updates in their email or mobile devices.',
-                  'See also, <a href="#pulseapp">the Pulse App</a>'
+                  'Using the Pulse App students can see course updates, Content, dates, announcements, and grades for all their courses. Direct students to download the app for iPhone and Android devices!',
+                  '<a href = "https://www.d2l.com/products/pulse/" target = "_blank" > Download the Pulse App </a> <i class="fas fa-external-link-alt d-print-none"></i>'
                 ]
               },
-              {
-                title: "Pinning Courses",
-                image: "courseadminpinning",
-                directionslist: [
-                  'Select the course selection dropdown menu <i class="fas fa-th"></i> in the mini navigation bar at the top of the page',
-                  'Select the thumbtack <i class="fas fa-thumbtack"></i> next to a course title to pin it to the top of the list',
-                  'Pinned courses also appear on the organization homepage.'
-                ]
-              },
+              // {
+              //   title: "Pinning Courses",
+              //   image: "courseadminpinning",
+              //   directionslist: [
+              //     'Select the course selection dropdown menu <i class="fas fa-th"></i> in the mini navigation bar at the top of the page',
+              //     'Select the thumbtack <i class="fas fa-thumbtack"></i> next to a course title to pin it to the top of the list',
+              //     'Pinned courses also appear on the organization homepage.'
+              //   ]
+              // },
               {
                 title: "Profile",
                 image: "courseadminprofile",
@@ -497,14 +498,14 @@
                   'Add a profile image and encourage your students to do the same. Add further contact information, interests, and social networking connections'
                 ]
               },
-              {
-                title: "Pulse App",
-                image: "courseadminpulse",
-                directionslist: [
-                  'Students can see course updates, Content, dates, announcements, and grades for all their courses. Direct students to download the app for iPhone and Android devices!',
-                  '<a href = "https://www.d2l.com/products/pulse/" target = "_blank" > Download the Pulse App </a> <i class="fas fa-external-link-alt d-print-none"></i>'
-                ]
-              }
+              // {
+              //   title: "Pulse App",
+              //   image: "courseadminpulse",
+              //   directionslist: [
+              //     'Students can see course updates, Content, dates, announcements, and grades for all their courses. Direct students to download the app for iPhone and Android devices!',
+              //     '<a href = "https://www.d2l.com/products/pulse/" target = "_blank" > Download the Pulse App </a> <i class="fas fa-external-link-alt d-print-none"></i>'
+              //   ]
+              // }
             ]
           },
           {
@@ -547,23 +548,19 @@
                 directionslist: [
                   // 'Students cannot see the Current Grade or Adjusted Grade until you release it to them',
                   // '<strong>Grade to Release</strong>',
-                  'From within the gradebook select <mark>Settings</mark> <i class="fas fa-cog"></i>',
-                  'Select the <mark>Calculation Options</mark> tab ',
-                  'Select the <mark>Automatically keep final grades updated</mark> <i class="far fa-check-square"></i> option',
+                  'Within the gradebook select <mark>Settings</mark> <i class="fas fa-cog"></i>',
                   'Select the <mark>Student View Display Options</mark> tab ',
-                  'Select the <mark>Display how final grade was calculated to users</mark> <i class="far fa-check-square"></i> option',
-                  // 'Verify that both the student view and managing view display the same number of decimal places',
+                  'Select <mark>Display how final grade was calculated to users</mark> <i class="far fa-check-square"></i>',
+                  'Select the <mark>Calculation Options</mark> tab',
+                  'Select <mark>Automatically keep final grades updated</mark> <i class="far fa-check-square"></i>',
                   '<mark>Save</mark> and <mark>Close</mark>',
-                  '<strong>Grade Scheme and Display</strong>',
-                  'Activate the context menu <i class="fas fa-caret-down"></i> next to the final grade item, select <mark>edit</mark>',
-                  // 'Optionally, rename the Current Grade item',
-                  'Use the pulldown menu <i class="fas fa-caret-down"></i> to select desired Grade Scheme',
-                  'Use Display Options to set what your students will see',
-                  '<mark>Save and Close</mark>',
-                  // 'Return to the <mark>Enter Grades</mark> screen',
-                  '<strong>Release</strong>',
+                  // '<strong>Grade Scheme and Display</strong>',
+                  // 'Activate the context menu <i class="fas fa-caret-down"></i> next to the final grade item, select <mark>edit</mark>',
+                  // 'Use the pulldown menu <i class="fas fa-caret-down"></i> to select desired Grade Scheme',
+                  // 'Use Display Options to set what your students will see',
+                  // '<mark>Save and Close</mark>',
+                  // '<strong>Release</strong>',
                   'Activate the context menu next to <mark>Current Grade</mark> <i class="fas fa-caret-down"></i> select <mark>Grade All</mark>',
-                  // 'At the top of the page next to <mark>Final Grade</mark> <i class="fas fa-caret-down"></i> activate the context menu and select <mark>Recalculate All</mark>',
                   'Activate the context menu next to <mark>Final Grade</mark> <i class="fas fa-caret-down"></i> select <mark>Release All</mark>',
                   '<mark>Save and Close</mark>',
                 ]
@@ -694,7 +691,6 @@
                   'Select <mark>New Quiz</mark>',
                   'Enter <mark>Name</mark>, <mark>Category</mark>, <mark>Description</mark>, and <mark>Add / Edit Questions</mark> on the <mark>Properties</mark> tab',
                   'Set the <mark>Due Date</mark>, <mark>Start and End Dates</mark>, <mark>Display In Calendar</mark>, <mark>Time Limit</mark>, and <mark>Password</mark> on the <mark>Restrictions</mark> tab',
-                  // 'Select the <mark>Display In Calendar</mark> <i class="far fa-check-square"></i> option',
                   'Select or create a <mark>Grade Item</mark> to link to on the <mark>Assessment</mark> tab',
                   'Select the <mark>Auto Export to Grades</mark> and <mark>Automatic Grade</mark> <i class="far fa-check-square"></i> options if desired',
                   'Set the number of attempts allowed',
@@ -783,18 +779,25 @@
             title: "Support",
             info: 'From the Course Homepage in any course you can select the <mark>Help</mark> tab at the bottom of the screen to ask any questions you might have about your course or about D2L in general.',
             howtos: [
-              {
-                title: "eLearn Documentation Site at ETS",
+            {
+                title: "More Documentation",
                 directionslist: [
-                  'A place for \'How Tos\' in D2L Brightspace and Accessibility: <a target="_blank" href="http://sites.pstcc.edu/elearn">ETS eLearn Documentation Site</a> <i class="fas fa-external-link-alt d-print-none"></i>'
-                ]
-              },
-              {
-                title: "Official Brightspace Documentation",
-                directionslist: [
+                  'A place for \'How Tos\' in D2L Brightspace and Accessibility: <a target="_blank" href="http://sites.pstcc.edu/elearn">ETS eLearn Documentation Site</a> <i class="fas fa-external-link-alt d-print-none"></i>',
                   'Access the D2L Brightspace official <a href="https://documentation.brightspace.com" target="_blank">documentation here</a> <i class="fas fa-external-link-alt d-print-none"></i>'
                 ]
-              }
+              },
+              // {
+              //   title: "eLearn Documentation Site at ETS",
+              //   directionslist: [
+              //     'A place for \'How Tos\' in D2L Brightspace and Accessibility: <a target="_blank" href="http://sites.pstcc.edu/elearn">ETS eLearn Documentation Site</a> <i class="fas fa-external-link-alt d-print-none"></i>'
+              //   ]
+              // },
+              // {
+              //   title: "Official Brightspace Documentation",
+              //   directionslist: [
+              //     'Access the D2L Brightspace official <a href="https://documentation.brightspace.com" target="_blank">documentation here</a> <i class="fas fa-external-link-alt d-print-none"></i>'
+              //   ]
+              // }
             ]
           }
         ]

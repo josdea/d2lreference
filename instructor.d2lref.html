@@ -303,22 +303,22 @@
                   // '<em>Careful:</em> be sure you don&#39;t accidentally enroll a student as an instructor as they would be able to change anything you can change in your course'
                 ]
               },
-              {
-                title: "Unenroll User",
-                image: "classlistunenroll",
-                directionslist: [
-                  'Select the checkbox <i class="far fa-check-square"></i> next to the user(s) to unenroll',
-                  'Select <mark>Unenroll</mark> at the top of the list'
-                ]
-              },
-              {
-                title: "Send Messages",
-                image: "classlistmessage",
-                directionslist: [
-                  'Select the checkbox <i class="far fa-check-square"></i> next to the student(s) you would like to message',
-                  'Select <mark>Message</mark>'
-                ]
-              }
+              // {
+              //   title: "Unenroll User",
+              //   image: "classlistunenroll",
+              //   directionslist: [
+              //     'Select the checkbox <i class="far fa-check-square"></i> next to the user(s) to unenroll',
+              //     'Select <mark>Unenroll</mark> at the top of the list'
+              //   ]
+              // },
+              // {
+              //   title: "Send Messages",
+              //   image: "classlistmessage",
+              //   directionslist: [
+              //     'Select the checkbox <i class="far fa-check-square"></i> next to the student(s) you would like to message',
+              //     'Select <mark>Message</mark>'
+              //   ]
+              // }
             ]
           },
           {
@@ -451,6 +451,33 @@
                   'Select your items to copy',
                   '<mark>Continue</mark> after confirming your choices',
                   'Select <mark>Finish</mark> and wait for the green check marks to appear'
+                ]
+              },
+              {
+                title: "Export Course Items to a Zip File",
+                image: "exportzip",
+                directionslist: [
+                  'Enter the course containing the items to export',
+                  'Select <mark>Course Admin</mark>',
+                  'Select <mark>Import / Export / Copy Components</mark>',
+                  'Select <mark>Export Components to Zip File</mark>',
+                  'Select <mark>Start</mark>',
+                  'Select the items to export',
+                  'Select <mark>Continue</mark> | <mark>Continue</mark> | <mark>Finish</mark>',
+                  '<strong>Before</strong> Selecting Done, Select the link to <mark>“Download the export Zip package”</mark>'
+                ]
+              },
+              {
+                title: "Import Course Items From a Zip File",
+                image: "importzip",
+                directionslist: [
+                  'Enter the course to import the items into',
+                  'Select <mark>Course Admin</mark>',
+                  'Select <mark>Import / Export / Copy Components</mark>',
+                  'Select <mark>Import Components from Zip File</mark>',
+                  'Select <mark>Start</mark>',
+                  'Select the Upload button or drag the zip file into the frame',
+                  'Select <mark>Import All Components</mark> or select <mark>Advanced Options</mark> to choose individual items to import'
                 ]
               },
               // {
@@ -811,8 +838,10 @@
         },
         copylink: function (toolid) {
           let newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search;
+          let gurl = 'https://goo.gl/Qy8dfB'
           let tagid = this.addTag(toolid);
-          this.urlCopy = newURL + "#" + tagid;
+          // this.urlCopy = newURL + "#" + tagid;
+          this.urlCopy = gurl + "#" + tagid;
 
           let testingCodeToCopy = document.getElementById("urlcopy");
           testingCodeToCopy.setAttribute('type', 'text')
